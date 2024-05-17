@@ -1,0 +1,4 @@
+/home/raxim4uk/Projects/race/understaningTransformation/build/CMakeFiles/race.dir
+/home/raxim4uk/Projects/race/understaningTransformation/build/CMakeFiles/graphick_lib.dir
+/home/raxim4uk/Projects/race/understaningTransformation/build/CMakeFiles/edit_cache.dir
+/home/raxim4uk/Projects/race/understaningTransformation/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/raxim4uk/Projects/race/build",
+  "command": "/usr/bin/g++ -g -o CMakeFiles/race.dir/main.cpp.o -c /home/raxim4uk/Projects/race/main.cpp",
+  "file": "/home/raxim4uk/Projects/race/main.cpp",
+  "output": "CMakeFiles/race.dir/main.cpp.o"
+},
+{
+  "directory": "/home/raxim4uk/Projects/race/build",
+  "command": "/usr/bin/g++ -g -o CMakeFiles/race_lib.dir/lib.cpp.o -c /home/raxim4uk/Projects/race/lib.cpp",
+  "file": "/home/raxim4uk/Projects/race/lib.cpp",
+  "output": "CMakeFiles/race_lib.dir/lib.cpp.o"
+},
+{
+  "directory": "/home/raxim4uk/Projects/race/build",
+  "command": "/usr/bin/g++ -g -o CMakeFiles/interLib.dir/interaction.cpp.o -c /home/raxim4uk/Projects/race/interaction.cpp",
+  "file": "/home/raxim4uk/Projects/race/interaction.cpp",
+  "output": "CMakeFiles/interLib.dir/interaction.cpp.o"
+}
+]

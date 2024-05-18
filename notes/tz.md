@@ -46,4 +46,5 @@ let's my save track_object and bottle for example also not a one design but **co
 4. пробуем сделать вводный экран экран игры и  экран конца игры
 5. разобраться с выведением текста в игре
 6. сделать рандомную генерацию объектов
+7. настроить cmakelists for windows compilation
 ```

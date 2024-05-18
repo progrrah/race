@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "librace_lib.a"
+			"path" : "libinterLib.a"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 12,
+				"line" : 21,
 				"parent" : 0
 			}
 		]
@@ -46,9 +46,9 @@
 			]
 		}
 	],
-	"id" : "race_lib::@6890427a1f51a3e7e1df",
-	"name" : "race_lib",
-	"nameOnDisk" : "librace_lib.a",
+	"id" : "interLib::@6890427a1f51a3e7e1df",
+	"name" : "interLib",
+	"nameOnDisk" : "libinterLib.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -76,12 +76,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "lib.cpp",
+			"path" : "interaction.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "library.hpp",
+			"path" : "interaction.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

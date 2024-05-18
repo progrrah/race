@@ -11,6 +11,7 @@ double deltay = 0.1;
 double deltax = 0.1;
 double deltaSpeed = 0.1;
 bool EXIT_KEY_IN_INTERACTION = 0;
+int SELECT_KEY_DISPLAY = 1;
 std::string line_1 = "----------------------------------------";
 std::string line_2 = "";
 int step_number = 1;
@@ -33,6 +34,8 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
     case 'q':
       exit(0);
     case 'Q':
+      exit(0);
+    case 'z':
       exit(0);
     default:
       break;
@@ -113,11 +116,8 @@ void Interaction::interact(track &mytrack, car &mycar) {
             ycar - wcar / 2 <= yobj + wobj / 2) {
           // track_object *ptr;
           trackOb->doing(mycar);
-          // mytrack.elems.
           mytrack.elems.erase(
               std::find(mytrack.elems.begin(), mytrack.elems.end(), trackOb));
-          // delete trackOb;
-          // trackOb.~
         }
     };
     // fooPrint();

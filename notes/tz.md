@@ -35,5 +35,15 @@
 
 MY TECH TASK
 1. glScaled3d IN DEAD ANIMATION
-2. rewrite for track_object and car elements for drawing
+2. rewrite for track_object and car elements for drawing 
 let's my save track_object and bottle for example also not a one design but **container of designs**
+
+
+```md
+1. дорабатываем логику отрисовку для машины и для track_object
+2. делаем удобный ввод точек и объектов(то есть нормальный ввод точек цветом и хранение)
+3. забиваем объекты в программу(шипы, сердца, и всё всё)
+4. пробуем сделать вводный экран экран игры и  экран конца игры
+5. разобраться с выведением текста в игре
+6. сделать рандомную генерацию объектов
+```

@@ -1,7 +1,5 @@
 /home/raxim4uk/Projects/race/build/CMakeFiles/race.dir
 /home/raxim4uk/Projects/race/build/CMakeFiles/race_lib.dir
 /home/raxim4uk/Projects/race/build/CMakeFiles/interLib.dir
-/home/raxim4uk/Projects/race/build/CMakeFiles/package.dir
-/home/raxim4uk/Projects/race/build/CMakeFiles/package_source.dir
 /home/raxim4uk/Projects/race/build/CMakeFiles/edit_cache.dir
 /home/raxim4uk/Projects/race/build/CMakeFiles/rebuild_cache.dir

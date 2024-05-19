@@ -29,6 +29,8 @@ extern double deltaSpeed;
 extern bool EXIT_KEY_IN_INTERACTION;
 
 extern container_type<double> rgblist;
+extern container_type<double> bigQuadColor;
+extern container_type<double> smallQuadColor;
 namespace Objects {
 using namespace Drawer;
 // TODO CONSTRUCTOR AND FUNCTIONS
@@ -54,7 +56,12 @@ struct track {
         drawingMethods(exdrawingMethods),
         elems(exelems) {}
 
-  void addElems();
+  void addElems(container_type<track_object *> exelems) {
+    for (auto const &i : exelems) {
+      this->elems.push_back(i);
+    }
+    // this->elems.push_back()
+  }
   void clearElems();
   void drawTrack() {
     for (int i{}; i < track_details_numbers; i++) {

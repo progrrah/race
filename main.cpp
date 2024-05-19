@@ -18,8 +18,8 @@ extern bool SELECT_KEY_WINDOW;
 extern int SELECT_KEY_DISPLAY;
 
 extern car mycar;
+extern container_type<track_object *> mytrackObjects;
 extern track mytrack;
-extern bottle obj1;
 extern double YY;
 extern double XX;
 extern double xCar;

@@ -40,6 +40,9 @@ struct design {
          container_type<double> externColorList = rgblist,
          container_type<typeDrawing> exdrawingMethods = {typeDrawing::POINTS})
       : numberPoints(number), points(externPoints), colorList(externColorList) {
+    calculateSizes();
+  };
+  void calculateSizes() {
     double maxX, minX;
     double maxY, minY;
     std::set<Point> sortedPoints{points.begin(), points.end()};
@@ -49,11 +52,31 @@ struct design {
     maxY = (--sortedPoints.end())->y;
     this->width = abs(minX - maxX);
     this->height = abs(minY - maxY);
-  };
+  }
   void printPoints() {
     std::set<Point> sortedPoints{points.begin(), points.end()};
     for (auto const &i : sortedPoints) std::cout << i.x << ' ' << i.y << '\n';
   }
+  void inputPoints() {
+    std::cout << "Ввод точки в систему";
+    Point p;
+    double x;
+    double y;
+    std::cin >> x;
+    std::cin >> y;
+    if (x >= -1 && x <= 1) {
+      p.x = x;
+      p.y = y;
+      points.push_back(p);
+      numberPoints++;
+    }
+  };
+  void inputDesigns(std::size_t count) {
+    //
+    std::cout << "Вводим дизайн в систему" << std::endl;
+    std::cout << "Введите колво точек" << std::endl;
+    for (std::size_t i{0}; i < count; i++) {
+    }
+  }
 };
 };  // namespace Drawer
-  

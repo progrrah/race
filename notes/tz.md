@@ -66,4 +66,3 @@ let's my save track_object and bottle for example also not a one design but **co
 4. разрыв дороги
 5. трамплин
 6. финиш
-7. dfd

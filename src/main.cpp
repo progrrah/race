@@ -1,3 +1,6 @@
+/*
+основной файл где инициализируется 
+*/
 #include <GL/glut.h>
 #include <vector>
 #include "design.hpp"

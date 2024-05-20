@@ -12,7 +12,8 @@
 using namespace Drawer;
 using namespace Objects;
 colorContainer_type bigQuadColor1{{0.2, 0.2, 0.7}};
-colorContainer_type bottleColor{{0.4, 0.4, 0.7}};
+colorContainer_type bottleColor{
+    {0.41, 0.4, 0.7}, {0.4, 0.2, 0.7}, {0.3, 0.4, 0.7}};
 
 Point b1 = {-0.1, -0.1};
 Point b2 = {-0.1, 0.1};

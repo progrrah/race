@@ -21,7 +21,7 @@ Point b3 = {0.1, 0.1};
 // Point b4 = {0.1, -0.1};
 
 container_type<Point> bottlePrototype{b1, b2, b3};
-design bottleDesignEl1(bottlePrototype, bottleColor, typeDrawing::TRIANGLES);
+design bottleDesignEl1(bottlePrototype, bottleColor, typeDrawing::POINTS);
 
 container_type<design*> bottleDesignElems{&bottleDesignEl1};
 Design bottleDesign{bottleDesignElems};

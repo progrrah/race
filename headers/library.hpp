@@ -24,6 +24,7 @@ const int SHIFTING_TIME = 100;
 const int WIDTH = 800;    // window width
 const int HEIGHT = 1000;  // window height
 const float POINT_RADIUS = 6.0f;
+const double deltaScaled = 1.2;
 
 extern double YY;
 extern double XX;
@@ -31,6 +32,8 @@ extern double carPhi;
 extern double deltay;
 extern double deltax;
 extern double deltaSpeed;
+extern double scaleX;
+extern double scaleY;
 extern bool EXIT_KEY_IN_INTERACTION;
 
 extern colorContainer_type rgblist;
@@ -80,7 +83,7 @@ struct car {
   int bonus;
   void drawCar() {
     /*carDesign.draw(typeDrawing::QUADS);*/
-    // ca
+    //
     auto component_numbers = carDesign.designs.size();
     for (size_t i = 0; i < component_numbers; i++) {
       carDesign.designs.at(i)->draw(carDesign.designs.at(i)->drawingMethod);
@@ -156,6 +159,11 @@ struct bottle : track_object {
     std::cout << "CONCRET DOING" << std::endl;
     EXIT_KEY_IN_INTERACTION = 1;
     deltax = -deltax;
+    // deltaScaled
+    scaleX *= deltaScaled;
+    scaleY *= deltaScaled;
+    mycar.width *= deltaScaled;
+    mycar.height *= deltaScaled;
     // carPhi = 50;
   }
   bottle(double exx, double exy, Design exDesign)

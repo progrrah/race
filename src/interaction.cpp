@@ -8,9 +8,11 @@ double XX = 0;
 double trackPhi = 0;
 double carPhi = 0;
 double deltaPhi = 5;
-double deltay = 0.05;
-double deltax = 0.1;
+double deltay = 0.1;
+double deltax = 0.2;
 double deltaSpeed = 0.1;
+double scaleX = 1;
+double scaleY = 1;
 bool EXIT_KEY_IN_INTERACTION = 0;
 int SELECT_KEY_DISPLAY = 1;
 std::string line_1 = "----------------------------------------";
@@ -43,10 +45,6 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
   }
 };
 void Interaction::redisplayTimer(int) {
-  // if (EXIT_KEY_IN_INTERACTION) {
-  //   glutPostRedisplay();
-  //   return;
-  // }
   auto fooPrint = [=]() {
     std::cout << "IT'S " << step_number++ << "' step!!!" << std::endl;
     std::cout << line_1 << std::endl;
@@ -59,9 +57,9 @@ void Interaction::redisplayTimer(int) {
   // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
 }
 void Interaction::changeXX(double deltax) {
-  if (mycar.x + mycar.width <= 1 && deltax >= 0)
+  if (mycar.x + mycar.width / 2 <= 1 && deltax >= 0)
     mycar.x += deltax;
-  else if (mycar.x - mycar.width >= -1 && deltax < 0)
+  else if (mycar.x - mycar.width / 2 >= -1 && deltax < 0)
     mycar.x += deltax;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +123,7 @@ void Interaction::interact(track &mytrack, car &mycar) {
               std::find(mytrack.elems.begin(), mytrack.elems.end(), trackOb));
         }
     };
-    // fooPrint();
+    fooPrint();
     check();
   };
 }
@@ -146,6 +144,7 @@ void Interaction::doTransformCar() {
   glRotated(carPhi, 0, 0, 1);
   glTranslated(mycar.x, 0, 0);
   glTranslated(0, YY, 0);
+  glScaled(scaleX, scaleY, 0);
 }
 void Interaction::doTransformTrackObjects(track_object &obj) {
   glTranslated(obj.x, obj.y, 0);

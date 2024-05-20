@@ -9,7 +9,7 @@ bool RANDOM_COLOR_OPTION = 0;
 void Drawer::design::draw(typeDrawing type) {
   switch (type) {
     case typeDrawing::QUADS:
-      for (int i{}; i < numberPoints; i += 4) {
+      for (int i{0}; i < numberPoints; i += 4) {
         glBegin(GL_QUADS);
         double r, g, b;
         if (RANDOM_COLOR_OPTION) {

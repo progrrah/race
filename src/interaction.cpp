@@ -3,6 +3,7 @@ extern Objects::car mycar;
 extern Objects::track mytrack;
 extern Objects::bottle obj1;
 double YY = mycar.initY;
+// double mycar
 double XX = 0;
 double trackPhi = 0;
 double carPhi = 0;
@@ -26,10 +27,10 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
       Interaction::changeXX(-deltax);
       break;
     case 'w':
-      YY += deltay;
+      if (YY + mycar.height / 2 <= 1) YY += deltay;
       break;
     case 's':
-      YY -= deltay;
+      if (YY - mycar.height / 2 >= -1) YY -= deltay;
       break;
     case 'q':
       exit(0);
@@ -57,7 +58,12 @@ void Interaction::redisplayTimer(int) {
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
   // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
 }
-void Interaction::changeXX(double deltax) { mycar.x += deltax; }
+void Interaction::changeXX(double deltax) {
+  if (mycar.x + mycar.width <= 1 && deltax >= 0)
+    mycar.x += deltax;
+  else if (mycar.x - mycar.width >= -1 && deltax < 0)
+    mycar.x += deltax;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Interaction::changeYY(double deltay) { mycar.y += deltay; }
@@ -72,7 +78,7 @@ void Interaction::moveALL(int) {
 bool Interaction::canDraw(track_object &object, car &mycar) {
   bool flag = 0;
   auto ycar = mycar.y;
-  auto htrack = mytrack.trackDesign.at(0).height;
+  auto htrack = mytrack.trackDesign.designs.at(0)->height;
   auto yobj = object.y;
   if (yobj <= htrack / 2 + ycar && yobj >= ycar - htrack) {
     flag = 1;
@@ -83,15 +89,14 @@ bool Interaction::canDraw(track_object &object, car &mycar) {
 // TODO : TOO MUCH CHECKING
 void Interaction::interact(track &mytrack, car &mycar) {
   auto accurancy = 0.01;
-  // auto accurancy1 = 1.1;
-  auto wcar = mycar.carDesign.width;
-  auto hcar = mycar.carDesign.height;
+  auto wcar = mycar.width;
+  auto hcar = mycar.height;
   auto xcar = mycar.x;
   auto ycar = (mycar.y + YY - accurancy * hcar);
   // auto LEVEL_LENGTH = mytrack.trackDesign.at(0).height - hcar / 2;
   for (auto &trackOb : mytrack.elems) {
-    auto wobj = trackOb->objectDesign.width;
-    auto hobj = trackOb->objectDesign.height;
+    auto wobj = trackOb->objectDesign.designs.at(0)->width;
+    auto hobj = trackOb->objectDesign.designs.at(0)->height;
     auto xobj = trackOb->x;
     auto yobj = trackOb->y;
     auto fooPrint = [=]() {

@@ -42,15 +42,16 @@ void Drawer::design::draw(typeDrawing type) {
           g = double(rand()) / RAND_MAX;
           b = double(rand()) / RAND_MAX;
         } else {
-          // r = colorList[0];
-          // g = colorList[1];
-          // b = colorList[2];
+          auto p = colorList[0].begin();
+          r = *(p);
+          g = *(p + 1);
+          b = *(p + 2);
         }
-        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glColor3d(r + 0.1, g + 0.2, b + 0.1);
         glVertex2d(points.at(i).x, points.at(i).y);
-        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glColor3d(r + 0.3, g + 0.3, b + 0.2);
         glVertex2d(points.at(i + 1).x, points.at(i + 1).y);
-        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glColor3d(r + 0.7, g + 0.3, b + 0.3);
         glVertex2d(points.at(i + 2).x, points.at(i + 2).y);
       }
       glEnd();
@@ -64,12 +65,23 @@ void Drawer::design::draw(typeDrawing type) {
       glEnd();
       break;
     case typeDrawing::POINTS:
-      glClear(GL_COLOR_BUFFER_BIT);
-      glColor3f(0, 0.5, 0.8);
+      // glClear(GL_COLOR_BUFFER_BIT);
       glPointSize(POINT_RADIUS);
       glBegin(GL_POINTS);
-      for (Point &p : points) {
-        glVertex2d(p.x, p.y);
+      for (int i{}; i < numberPoints; i++) {
+        double r, g, b;
+        if (RANDOM_COLOR_OPTION) {
+          r = double(rand()) / RAND_MAX;
+          g = double(rand()) / RAND_MAX;
+          b = double(rand()) / RAND_MAX;
+        } else {
+          auto p = colorList[0].begin();
+          r = *(p);
+          g = *(p + 1);
+          b = *(p + 2);
+        }
+        glColor3d(r, g, b);
+        glVertex2d(points.at(i).x, points.at(i).y);
       }
       glEnd();
       break;

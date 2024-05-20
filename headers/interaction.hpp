@@ -16,6 +16,7 @@ namespace Interaction {
 using namespace Drawer;
 using namespace Objects;
 void keyBoard(unsigned char key, int x, int y);
+void anymalKeyboard(unsigned char key, int x, int y); // function for random changed buttons for hard level
 void redisplayTimer(int value = 1);
 void changeYY(double deltay = deltay);
 void changeXX(double deltax = deltax);

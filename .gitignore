@@ -1,7 +1,8 @@
 build
 .vscode
-understaningTransformation
-tst
+understandTransformation
+testing
+temp.md
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles

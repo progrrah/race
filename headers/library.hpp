@@ -18,6 +18,7 @@
 #include "drawer.hpp"
 template <typename T>
 using container_type = std::vector<T>;
+using colorContainer_type = container_type<container_type<double>>;
 const int REDISPLAY_TIME = 50;
 const int SHIFTING_TIME = 100;
 const int WIDTH = 800;    // window width
@@ -32,9 +33,7 @@ extern double deltax;
 extern double deltaSpeed;
 extern bool EXIT_KEY_IN_INTERACTION;
 
-extern container_type<container_type<double>> rgblist;
-extern container_type<double> bigQuadColor;
-extern container_type<double> smallQuadColor;
+extern colorContainer_type rgblist;
 namespace Objects {
 using namespace Drawer;
 // TODO CONSTRUCTOR AND FUNCTIONS
@@ -46,17 +45,12 @@ struct track {
   const int track_details_numbers;
   // all track_objects here
   container_type<track_object *> elems;
-  container_type<design> trackDesign;
-  container_type<typeDrawing> drawingMethods;
+  Design trackDesign;
   track() = default;
-  track(container_type<design> extrackDesign,
-        container_type<track_object *> exelems,
-        int extrack_component_numbers = 2,
-        container_type<typeDrawing> exdrawingMethods = {typeDrawing::QUADS})
+  track(Design extrackDesign, container_type<track_object *> exelems)
       : number_elems(exelems.size()),
-        track_details_numbers(extrack_component_numbers),
+        track_details_numbers(extrackDesign.designs.size()),
         trackDesign(extrackDesign),
-        drawingMethods(exdrawingMethods),
         elems(exelems) {}
 
   void addElems(container_type<track_object *> exelems) {
@@ -67,10 +61,8 @@ struct track {
   void clearElems();
   void drawTrack() {
     for (int i{}; i < track_details_numbers; i++) {
-      if (track_details_numbers == drawingMethods.size())
-        trackDesign.at(i).draw(drawingMethods.at(i));
-      else
-        trackDesign.at(i).draw(typeDrawing::QUADS);
+      auto trackDesignElems = trackDesign.designs.at(i);
+      trackDesignElems->draw(trackDesignElems->drawingMethod);
     }
   }
 };
@@ -79,12 +71,21 @@ struct car {
   double initX, initY;
   double x{initX};
   double y{};
+  double width;
+  double height;
 
-  design carDesign;
+  Design carDesign;
   double speed;
   int lifes;
   int bonus;
-  void drawCar() { carDesign.draw(typeDrawing::QUADS); }
+  void drawCar() {
+    /*carDesign.draw(typeDrawing::QUADS);*/
+    // ca
+    auto component_numbers = carDesign.designs.size();
+    for (size_t i = 0; i < component_numbers; i++) {
+      carDesign.designs.at(i)->draw(carDesign.designs.at(i)->drawingMethod);
+    }
+  }
   void setSpeed(double newspeed) { speed = newspeed; }
   void dead() {
     lifes = 0;
@@ -93,23 +94,32 @@ struct car {
   }
   int getLifes() { return lifes; }
   car(){};
-  car(double exInitX, double exInitY, design exDs, double exSpeed, int exLifes,
+  car(double exInitX, double exInitY, Design exDs, double exSpeed, int exLifes,
       int exBonus)
       : initX(exInitX),
         initY(exInitY),
         carDesign(exDs),
         lifes(exLifes),
-        bonus(exBonus) {}
+        bonus(exBonus),
+        width(exDs.designs.at(0)->width),
+        height(exDs.designs.at(0)->height) {}
 };
 // REWRITE THE DRAW METHOD
 struct track_object {
   // coords of centre
   double x, y;
-  design objectDesign;
+  Design objectDesign;
   // interact with car
   virtual void doing(car &mycar) = 0;
-  void drawObject() { objectDesign.draw(typeDrawing::QUADS); }
-  track_object(double exx, double exy, design exDesign)
+  void drawObject() {
+    // objectDesign.draw(typeDrawing::QUADS);
+    auto number = objectDesign.designs.size();
+    for (size_t i = 0; i < number; i++) {
+      auto designElems = objectDesign.designs.at(i);
+      designElems->draw(designElems->drawingMethod);
+    }
+  }
+  track_object(double exx, double exy, Design exDesign)
       : x(exx), y(exy), objectDesign(exDesign){};
 };
 };  // namespace Objects
@@ -138,7 +148,7 @@ struct spikes : track_object {
     mycar.lifes--;
     if (mycar.lifes == 0) mycar.dead();
   }
-  spikes(double exx, double exy, design exDesign)
+  spikes(double exx, double exy, Design exDesign)
       : track_object(exx, exy, exDesign) {}
 };
 struct bottle : track_object {
@@ -148,7 +158,7 @@ struct bottle : track_object {
     deltax = -deltax;
     // carPhi = 50;
   }
-  bottle(double exx, double exy, design exDesign)
+  bottle(double exx, double exy, Design exDesign)
       : track_object(exx, exy, exDesign) {}
 };
 };  // namespace Objects

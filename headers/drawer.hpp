@@ -3,6 +3,7 @@
 struct Point, design;
 */
 #pragma once
+// #include "animation.hpp"
 template <typename T>
 using container_type = std::vector<T>;
 extern container_type<container_type<double>> rgblist;
@@ -34,15 +35,17 @@ struct design {
   container_type<Point> points; /*size it numberPoints*/
   double width, height;
   container_type<container_type<double>> colorList;
-  container_type<typeDrawing> drawingMethods;
+  // container_type<typeDrawing> drawingMethods;
+  typeDrawing drawingMethod;
   void draw(typeDrawing type);
   design() = default;
   design(container_type<Point> externPoints,
          container_type<container_type<double>> externColorList = rgblist,
-         container_type<typeDrawing> exdrawingMethods = {typeDrawing::POINTS})
+         typeDrawing exdrawingMethod = typeDrawing::POINTS)
       : numberPoints(externPoints.size()),
         points(externPoints),
-        colorList(externColorList) {
+        colorList(externColorList),
+        drawingMethod(exdrawingMethod) {
     calculateSizes();
   };
   void calculateSizes() {
@@ -82,6 +85,10 @@ struct design {
     }
   }
 };
+struct Design {
+  container_type<design *> designs;
+};
+
 template <typename T>
 class gigaInitList : std::initializer_list<T> {};
 };  // namespace Drawer

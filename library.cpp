@@ -1,41 +1,59 @@
+/*
+здесь главная функция для отрисовки объектов
+////
+  void Drawer::design::draw(typeDrawing type);
+////
+*/
+bool RANDOM_COLOR_OPTION = 0;
 #include "library.hpp"
 void Drawer::design::draw(typeDrawing type) {
   switch (type) {
     case typeDrawing::QUADS:
       for (int i{}; i < numberPoints; i += 4) {
         glBegin(GL_QUADS);
-        // double r = double(rand()) / RAND_MAX;
-        // double g = double(rand()) / RAND_MAX;
-        // double b = double(rand()) / RAND_MAX;
-        double r = colorList[0];
-        double g = colorList[1];
-        double b = colorList[2];
+        double r, g, b;
+        if (RANDOM_COLOR_OPTION) {
+          r = double(rand()) / RAND_MAX;
+          g = double(rand()) / RAND_MAX;
+          b = double(rand()) / RAND_MAX;
+        } else {
+          auto p = colorList[i].begin();
+          r = *(p);
+          g = *(p + 1);
+          b = *(p + 2);
+        }
         glColor3d(r + 0.1, g + 0.3, b + 0.1);
         glVertex2d(points.at(i).x, points.at(i).y);
+        glColor3d(r + 0.2, g + 0.5, b + 0.1);
         glVertex2d(points.at(i + 1).x, points.at(i + 1).y);
+        glColor3d(r + 0.3, g + 0.6, b + 0.1);
         glVertex2d(points.at(i + 2).x, points.at(i + 2).y);
+        glColor3d(r + 0.7, g + 0.7, b + 0.1);
         glVertex2d(points.at(i + 3).x, points.at(i + 3).y);
       }
       glEnd();
       break;
     case typeDrawing::TRIANGLES:
       for (int i{}; i < numberPoints; i += 3) {
-        glBegin(GL_QUADS);
-        double r = double(rand()) / RAND_MAX;
-        double g = double(rand()) / RAND_MAX;
-        double b = double(rand()) / RAND_MAX;
-        // double r = colorList[0];
-        // double g = colorList[1];
-        // double b = colorList[2];
+        glBegin(GL_TRIANGLES);
+        double r, g, b;
+        if (RANDOM_COLOR_OPTION) {
+          r = double(rand()) / RAND_MAX;
+          g = double(rand()) / RAND_MAX;
+          b = double(rand()) / RAND_MAX;
+        } else {
+          // r = colorList[0];
+          // g = colorList[1];
+          // b = colorList[2];
+        }
         glColor3d(r + 0.1, g + 0.3, b + 0.1);
         glVertex2d(points.at(i).x, points.at(i).y);
+        glColor3d(r + 0.1, g + 0.3, b + 0.1);
         glVertex2d(points.at(i + 1).x, points.at(i + 1).y);
+        glColor3d(r + 0.1, g + 0.3, b + 0.1);
         glVertex2d(points.at(i + 2).x, points.at(i + 2).y);
       }
       glEnd();
-      // glBegin(GL_TRIANGLES);
-
-      // glEnd();
       break;
     case typeDrawing::POLYGONS:
       // for loop

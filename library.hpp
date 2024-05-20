@@ -1,5 +1,9 @@
+/*
+библиотека которую еще придеться перелопатить
+*/
 #pragma once
 #include <GL/freeglut.h>
+#include <initializer_list>
 #include <GL/glut.h>
 #include <string>
 #include <stdio.h>
@@ -28,14 +32,13 @@ extern double deltax;
 extern double deltaSpeed;
 extern bool EXIT_KEY_IN_INTERACTION;
 
-extern container_type<double> rgblist;
+extern container_type<container_type<double>> rgblist;
 extern container_type<double> bigQuadColor;
 extern container_type<double> smallQuadColor;
 namespace Objects {
 using namespace Drawer;
 // TODO CONSTRUCTOR AND FUNCTIONS
 struct track_object;
-// OK
 struct track {
   // количество всех элементов без машины(всех trackobjects)
   int number_elems;
@@ -45,12 +48,12 @@ struct track {
   container_type<track_object *> elems;
   container_type<design> trackDesign;
   container_type<typeDrawing> drawingMethods;
-  // track() = default;
-  track(int exnumber, container_type<design> extrackDesign,
+  track() = default;
+  track(container_type<design> extrackDesign,
         container_type<track_object *> exelems,
         int extrack_component_numbers = 2,
         container_type<typeDrawing> exdrawingMethods = {typeDrawing::QUADS})
-      : number_elems(exnumber),
+      : number_elems(exelems.size()),
         track_details_numbers(extrack_component_numbers),
         trackDesign(extrackDesign),
         drawingMethods(exdrawingMethods),
@@ -60,7 +63,6 @@ struct track {
     for (auto const &i : exelems) {
       this->elems.push_back(i);
     }
-    // this->elems.push_back()
   }
   void clearElems();
   void drawTrack() {
@@ -87,6 +89,7 @@ struct car {
   void dead() {
     lifes = 0;
     // TODO draw dead animation
+    // gameEndDisplay()
   }
   int getLifes() { return lifes; }
   car(){};

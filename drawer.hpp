@@ -1,13 +1,15 @@
+/*
+представлены структуры для задания внешнего вида объектов и отрисовки их
+struct Point, design;
+*/
 #pragma once
-#include "library.hpp"
 template <typename T>
 using container_type = std::vector<T>;
-extern container_type<double> rgblist;
+extern container_type<container_type<double>> rgblist;
 namespace Drawer {
 enum class typeDrawing { QUADS, TRIANGLES, POLYGONS, CIRCLES, POINTS };
 struct Point {
   double x, y;
-  // OKAY
   bool operator==(const Point &other) const {
     return (x == other.x) && (y == other.y);
   }
@@ -20,7 +22,6 @@ struct Point {
   bool operator>(const Point &other) const {
     return x > other.x || (x == other.x && y > other.y);
   }
-  // I DONT REMEMBER
   Point &operator=(const std::initializer_list<double> &other) {
     this->x = *other.begin();
     this->y = *(other.end());
@@ -32,14 +33,16 @@ struct design {
   int numberPoints;
   container_type<Point> points; /*size it numberPoints*/
   double width, height;
-  container_type<double> colorList; /*size it numberPoints*/
+  container_type<container_type<double>> colorList;
   container_type<typeDrawing> drawingMethods;
   void draw(typeDrawing type);
   design() = default;
-  design(int number, container_type<Point> externPoints,
-         container_type<double> externColorList = rgblist,
+  design(container_type<Point> externPoints,
+         container_type<container_type<double>> externColorList = rgblist,
          container_type<typeDrawing> exdrawingMethods = {typeDrawing::POINTS})
-      : numberPoints(number), points(externPoints), colorList(externColorList) {
+      : numberPoints(externPoints.size()),
+        points(externPoints),
+        colorList(externColorList) {
     calculateSizes();
   };
   void calculateSizes() {
@@ -79,4 +82,6 @@ struct design {
     }
   }
 };
+template <typename T>
+class gigaInitList : std::initializer_list<T> {};
 };  // namespace Drawer

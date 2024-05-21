@@ -24,7 +24,7 @@ const int SHIFTING_TIME = 100;
 const int WIDTH = 800;    // window width
 const int HEIGHT = 1000;  // window height
 const float POINT_RADIUS = 6.0f;
-const double deltaScaled = 1.2;
+const double deltaScaled = 1.1;
 
 extern double YY;
 extern double XX;
@@ -82,8 +82,6 @@ struct car {
   int lifes;
   int bonus;
   void drawCar() {
-    /*carDesign.draw(typeDrawing::QUADS);*/
-    //
     auto component_numbers = carDesign.designs.size();
     for (size_t i = 0; i < component_numbers; i++) {
       carDesign.designs.at(i)->draw(carDesign.designs.at(i)->drawingMethod);

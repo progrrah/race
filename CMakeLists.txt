@@ -26,10 +26,12 @@ ELSE()
     add_library(race_lib STATIC src/library.cpp headers/library.hpp)
     add_library(interLib STATIC src/interaction.cpp headers/interaction.hpp)
 
+    # add_library(musicLib STATIC src/musicMoment.cpp headers/musicMoment.hpp)
     target_include_directories(race PUBLIC headers)
     target_include_directories(race_lib PUBLIC headers)
     target_include_directories(interLib PUBLIC headers)
 
+    # target_include_directories(musicLib PUBLIC headers)
     target_link_libraries(race_lib PUBLIC OpenGL::GL GLUT::GLUT GLEW::GLEW X11::X11)
     target_link_libraries(interLib PUBLIC OpenGL::GL GLUT::GLUT GLEW::GLEW X11::X11)
     target_link_libraries(race PUBLIC race_lib interLib OpenGL::GL GLUT::GLUT GLEW::GLEW X11::X11)

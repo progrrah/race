@@ -2,8 +2,8 @@
 extern Objects::car mycar;
 extern Objects::track mytrack;
 extern Objects::bottle obj1;
+extern char **fileName;
 double YY = mycar.initY;
-// double mycar
 double XX = 0;
 double trackPhi = 0;
 double carPhi = 0;
@@ -52,7 +52,9 @@ void Interaction::redisplayTimer(int) {
   interact(mytrack, mycar);
   glutPostRedisplay();
   // fooPrint();
+  mycar.animate();
   changeYY(deltay);
+  // playMusic(2, fileName);
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
   // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
 }

@@ -1,5 +1,5 @@
 /*
-основной файл где инициализируется 
+основной файл где инициализируется
 */
 #include <GL/glut.h>
 #include <vector>
@@ -20,6 +20,7 @@ extern bool EXIT_KEY_IN_INTERACTION;
 extern bool SELECT_KEY_WINDOW;
 extern int SELECT_KEY_DISPLAY;
 
+char **fileName;
 extern car mycar;
 extern container_type<track_object *> mytrackObjects;
 extern track mytrack;
@@ -40,7 +41,16 @@ void initOpengl();
 static void RenderSceneCB_win1();
 static void RenderSceneCB_win2();
 void useTwoWindow();
+///////////////
+///////////////
+//////
+/// THIS IS MAIN
+//////
+///////////////
+///////////////
 int main(int argc, char **argv) {
+  // char *file = "Main.wav";
+  fileName = argv;
   glutInit(&argc, argv);
   initOpengl();
   glutMainLoop();

@@ -16,16 +16,17 @@
 #include <set>
 #include <iostream>
 #include "drawer.hpp"
+// #include "musicMoment.hpp"
 template <typename T>
 using container_type = std::vector<T>;
 using colorContainer_type = container_type<container_type<double>>;
-const int REDISPLAY_TIME = 50;
+const int REDISPLAY_TIME = 100;
 const int SHIFTING_TIME = 100;
 const int WIDTH = 800;    // window width
 const int HEIGHT = 1000;  // window height
 const float POINT_RADIUS = 6.0f;
-const double deltaScaled = 1.1;
-
+const double deltaScaled = 1.01;
+extern char **fileName;
 extern double YY;
 extern double XX;
 extern double carPhi;
@@ -87,6 +88,13 @@ struct car {
       carDesign.designs.at(i)->draw(carDesign.designs.at(i)->drawingMethod);
     }
   }
+  void animate(double deltaxScaledx = deltaScaled,
+               double deltaxScaledy = deltaScaled) {
+    scaleX /= deltaxScaledx;
+    scaleY /= deltaxScaledy;
+    this->width /= deltaxScaledx;
+    this->height /= deltaxScaledy;
+  };
   void setSpeed(double newspeed) { speed = newspeed; }
   void dead() {
     lifes = 0;

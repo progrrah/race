@@ -21,7 +21,7 @@ void Drawer::design::draw(typeDrawing type) {
           g = colorList[i][1];
           b = colorList[i][2];
         }
-        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glColor3d(r, g, b);
         glVertex2d(points.at(i).x, points.at(i).y);
       }
       glEnd();
@@ -39,7 +39,7 @@ void Drawer::design::draw(typeDrawing type) {
           g = colorList[i][1];
           b = colorList[i][2];
         }
-        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glColor3d(r, g, b);
         glVertex2d(points.at(i).x, points.at(i).y);
       }
       glEnd();

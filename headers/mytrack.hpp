@@ -3,8 +3,6 @@
 #include "library.hpp"
 using namespace Drawer;
 using namespace Objects;
-extern bottle obj1;
-extern bottle obj2;
 container_type<container_type<double>> trackMainColor{
     {0.1, 0.2, 0.7}, {0.3, 0.2, 0.7}, {0.1, 0.4, 0.7}, {0.9, 0.2, 0.7}};
 container_type<container_type<double>> trackLineColor{

@@ -24,6 +24,7 @@ char **fileName;
 extern car mycar;
 extern container_type<track_object *> mytrackObjects;
 extern track mytrack;
+extern track menuGame;
 extern double YY;
 extern double XX;
 extern double xCar;
@@ -77,6 +78,7 @@ void displayGame() {
   doTransformTrack();
   mytrack.drawTrack();
   glPopMatrix();
+  menuGame.drawTrack();
   doTransformCar();
   mycar.drawCar();
   glLoadIdentity();

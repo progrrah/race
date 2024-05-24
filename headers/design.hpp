@@ -6,6 +6,7 @@
 #include "library.hpp"
 #include "mytrack.hpp"
 #include "mycar.hpp"
+#include "gameMenu.hpp"
 #include "trackObjects.hpp"
 using namespace Objects;
 using namespace Drawer;
@@ -34,3 +35,11 @@ track mytrack{trackDesign, mytrackObjects};
 создаем машину, определяя начальные координаты, дизайн, скорость, жизни, бонусы
 в начале игры*/
 car mycar{0, -0.425, dcar, 0, 2, 0};
+
+/*
+внутриигровая менюшка времени, жизней, бонусов и тд
+*/
+
+bottle b11(-0.8, 1, bottleDesign);
+container_type<track_object*> menuElems{&b11};
+track menuGame{gameMenuDesign, menuElems};

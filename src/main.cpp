@@ -22,16 +22,9 @@ extern int SELECT_KEY_DISPLAY;
 
 char **fileName;
 extern car mycar;
-extern container_type<track_object *> mytrackObjects;
 extern track mytrack;
 extern track menuGame;
-extern double YY;
-extern double XX;
-extern double xCar;
-extern double yCar;
-extern double trackPhi;  // it hold in mycar.x
-extern double carPhi;    // it hold in mycar.x
-extern double deltaPhi;
+
 void selectDisplay();
 void displayStartMenu();
 void displayEndMenu();
@@ -42,13 +35,6 @@ void initOpengl();
 static void RenderSceneCB_win1();
 static void RenderSceneCB_win2();
 void useTwoWindow();
-///////////////
-///////////////
-//////
-/// THIS IS MAIN
-//////
-///////////////
-///////////////
 int main(int argc, char **argv) {
   // char *file = "Main.wav";
   fileName = argv;
@@ -79,6 +65,15 @@ void displayGame() {
   mytrack.drawTrack();
   glPopMatrix();
   menuGame.drawTrack();
+  auto drawMenuObjects = []() {
+    for (auto object_iter : menuGame.elems) {
+      glPushMatrix();
+      doTransformTrackObjects(*object_iter);
+      object_iter->drawObject();
+      glLoadIdentity();
+    }
+  };
+  drawMenuObjects();
   doTransformCar();
   mycar.drawCar();
   glLoadIdentity();

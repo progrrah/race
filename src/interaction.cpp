@@ -106,9 +106,8 @@ void Interaction::interact(track &mytrack, car &mycar) {
     auto check = [&]() {
       if (xcar + wcar / 2 >= xobj - wobj / 2 &&
           xcar - wcar / 2 <= xobj + wobj / 2)
-        if (ycar + wcar / 2 >= yobj - wobj / 2 &&
-            ycar - wcar / 2 <= yobj + wobj / 2) {
-          // track_object *ptr;
+        if (ycar + hcar / 2 >= yobj - hobj / 2 &&
+            ycar - hcar / 2 <= yobj + hobj / 2) {
           trackOb->doing(mycar);
           mytrack.elems.erase(
               std::find(mytrack.elems.begin(), mytrack.elems.end(), trackOb));
@@ -134,5 +133,7 @@ void Interaction::doTransformCar() {
 }
 void Interaction::doTransformTrackObjects(track_object &obj) {
   glTranslated(obj.x, obj.y, 0);
-  glTranslated(0, -mycar.y, 0);
+  if (!obj.IS_STATIC) {
+    glTranslated(0, -mycar.y, 0);
+  }
 }

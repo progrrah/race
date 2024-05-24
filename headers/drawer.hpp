@@ -3,6 +3,7 @@
 struct Point, design;
 */
 #pragma once
+#include "library.hpp"
 // #include "animation.hpp"
 template <typename T>
 using container_type = std::vector<T>;

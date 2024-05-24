@@ -19,27 +19,33 @@ bottle obj3(0, 4, bottleDesign);
 bottle obj4(0, 5, bottleDesign);
 bottle obj5(-0.4, 7, bottleDesign);
 spikes obj6(0, 2, spikesDesign);
-heart obj7(0, 0, heartDesign);
+heart obj7(0.5, 0.5, heartDesign);
+money obj8(0.5, 5, moneyDesign);
+money obj9(-0.5, 5, moneyRedDesign);
+breakWay obj10(0, 2, breakWayDesign);
 
-/* добавляем адреса всех объектов, которые будут находится на карте
- */
-container_type<track_object*> mytrackObjects{&obj1, &obj2, &obj3, &obj4,
-                                             &obj5, &obj6, &obj7};
+/* добавляем адреса всех объектов, которые будут находится на карте*/
+container_type<track_object*> mytrackObjects{
+    &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины
 */
-track mytrack{trackDesign, mytrackObjects};
+container_type<track_object*> oneObject{&obj10};
+track mytrack{trackDesign, oneObject};
+// track mytrack{trackDesign, mytrackObjects};
 
 /*
 создаем машину, определяя начальные координаты, дизайн, скорость, жизни, бонусы
-в начале игры*/
+в начале игры
+*/
 car mycar{0, -0.425, dcar, 0, 2, 0};
 
 /*
 внутриигровая менюшка времени, жизней, бонусов и тд
 */
 
-bottle b11(-0.8, 1, bottleDesign);
-container_type<track_object*> menuElems{&b11};
+bottle b11(-0.8, 0.9, bottleDesign, true);
+heart menuHeart(-0.6, 0.9, heartDesign, true);
+container_type<track_object*> menuElems{&b11, &menuHeart};
 track menuGame{gameMenuDesign, menuElems};

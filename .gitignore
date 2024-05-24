@@ -3,6 +3,7 @@ build
 understandTransformation
 testing
 temp.md
+Main.wav
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles

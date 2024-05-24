@@ -45,18 +45,16 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
   }
 };
 void Interaction::redisplayTimer(int) {
+  // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
   auto fooPrint = [=]() {
     std::cout << "IT'S " << step_number++ << "' step!!!" << std::endl;
     std::cout << line_1 << std::endl;
   };
   interact(mytrack, mycar);
   glutPostRedisplay();
-  // fooPrint();
-  mycar.animate();
   changeYY(deltay);
   // playMusic(2, fileName);
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
-  // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
 }
 void Interaction::changeXX(double deltax) {
   if (mycar.x + mycar.width / 2 <= 1 && deltax >= 0)
@@ -64,16 +62,7 @@ void Interaction::changeXX(double deltax) {
   else if (mycar.x - mycar.width / 2 >= -1 && deltax < 0)
     mycar.x += deltax;
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Interaction::changeYY(double deltay) { mycar.y += deltay; }
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Interaction::moveALL(int) {
-  changeYY(deltay);
-  glutTimerFunc(SHIFTING_TIME, Interaction::moveALL, 0);
-  // checking function
-}
 // DONE
 bool Interaction::canDraw(track_object &object, car &mycar) {
   bool flag = 0;
@@ -130,12 +119,7 @@ void Interaction::interact(track &mytrack, car &mycar) {
   };
 }
 void Interaction::drawALL() {
-  for (auto &trackObj : mytrack.elems)
-  //   if (Interaction::canDraw(trackObj, mycar)) {
-  //     glTranslated(trackObj.x, trackObj.y, 0);
-  //     trackObj.drawObject();
-  //   }
-  {
+  for (auto &trackObj : mytrack.elems) {
     canDraw(*trackObj, mycar);
     trackObj->drawObject();
   }

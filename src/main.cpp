@@ -80,17 +80,17 @@ void displayGame() {
   doTransformCar();
   mycar.drawCar();
   glLoadIdentity();
-  ///
-  // THE MOST IMPORTANT MOMENT!!!
-  for (auto object_iter : mytrack.elems) {
-    if (canDraw(*object_iter, mycar)) {
-      // std::cout << "I'm drawing";
-      glPushMatrix();
-      doTransformTrackObjects(*object_iter);
-      object_iter->drawObject();
-      glLoadIdentity();
+  auto drawTrackObjects = []() {
+    for (auto object_iter : mytrack.elems) {
+      if (canDraw(*object_iter, mycar)) {
+        glPushMatrix();
+        doTransformTrackObjects(*object_iter);
+        object_iter->drawObject();
+        glLoadIdentity();
+      }
     }
-  }
+  };
+  drawTrackObjects();
   glutSwapBuffers();
 }
 void displayStartMenu() {
@@ -112,9 +112,6 @@ void initOpengl() {
   glutKeyboardFunc(keyBoard);
   // how does it work
   selectDisplay();
-  // glutDisplayFunc(displayGame);
-  // glutDisplayFunc(displayStartMenu);
-  // glutReshapeFunc(reshape);
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
   // glutTimerFunc(SHIFTING_TIME, moveALL, 0);
 }

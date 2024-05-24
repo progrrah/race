@@ -17,7 +17,6 @@ void Drawer::design::draw(typeDrawing type) {
           g = double(rand()) / RAND_MAX;
           b = double(rand()) / RAND_MAX;
         } else {
-          // auto p = colorList[i][0]
           r = colorList[i][0];
           g = colorList[i][1];
           b = colorList[i][2];
@@ -74,7 +73,7 @@ void Drawer::design::draw(typeDrawing type) {
       glEnd();
       break;
     default:
-      // std::cout << "I dont know THIS TYPE OF DRAWING\n";
+      std::cout << "I dont know THIS TYPE OF DRAWING\n";
       break;
   }
 }

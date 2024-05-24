@@ -1,5 +1,6 @@
 /*
-библиотека которую еще придеться перелопатить
+библиотека которую еще придеться перелопатить, но она является центральной в
+нашей работе
 */
 #pragma once
 #include <GL/freeglut.h>
@@ -16,6 +17,8 @@
 #include <set>
 #include <iostream>
 #include "drawer.hpp"
+/* пока не подключаем, еще не разобралися
+ */
 // #include "musicMoment.hpp"
 template <typename T>
 using container_type = std::vector<T>;
@@ -43,11 +46,8 @@ using namespace Drawer;
 // TODO CONSTRUCTOR AND FUNCTIONS
 struct track_object;
 struct track {
-  // количество всех элементов без машины(всех trackobjects)
   int number_elems;
-  // количество элементов, из которых будет рисоваться полотно трека
   const int track_details_numbers;
-  // all track_objects here
   container_type<track_object *> elems;
   Design trackDesign;
   track() = default;
@@ -113,15 +113,11 @@ struct car {
         width(exDs.designs.at(0)->width),
         height(exDs.designs.at(0)->height) {}
 };
-// REWRITE THE DRAW METHOD
 struct track_object {
-  // coords of centre
   double x, y;
   Design objectDesign;
-  // interact with car
   virtual void doing(car &mycar) = 0;
   void drawObject() {
-    // objectDesign.draw(typeDrawing::QUADS);
     auto number = objectDesign.designs.size();
     for (size_t i = 0; i < number; i++) {
       auto designElems = objectDesign.designs.at(i);
@@ -140,6 +136,8 @@ struct heart : track_object {
       mycar.lifes++;
     }
   }
+  heart(double exx, double exy, Design exDesign)
+      : track_object(exx, exy, exDesign) {}
 };
 struct money : track_object {
   int bonus;
@@ -150,6 +148,8 @@ struct money : track_object {
       mycar.bonus -= 1000;
     }
   }
+  money(double exx, double exy, Design exDesign)
+      : track_object(exx, exy, exDesign) {}
 };
 struct spikes : track_object {
   void doing(car &mycar) {
@@ -165,12 +165,10 @@ struct bottle : track_object {
     std::cout << "CONCRET DOING" << std::endl;
     EXIT_KEY_IN_INTERACTION = 1;
     deltax = -deltax;
-    // deltaScaled
     scaleX *= deltaScaled;
     scaleY *= deltaScaled;
     mycar.width *= deltaScaled;
     mycar.height *= deltaScaled;
-    // carPhi = 50;
   }
   bottle(double exx, double exy, Design exDesign)
       : track_object(exx, exy, exDesign) {}

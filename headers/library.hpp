@@ -173,4 +173,19 @@ struct bottle : track_object {
   bottle(double exx, double exy, Design exDesign)
       : track_object(exx, exy, exDesign) {}
 };
+struct finish : track_object {
+  void doing(car &mycar) {}
+  finish(double exx, double exy, Design exDesign)
+      : track_object(exx, exy, exDesign) {}
+};
+struct breakWay : track_object {
+  void doing(car &mycar) {}
+  breakWay(double exx, double exy, Design exDesign)
+      : track_object(exx, exy, exDesign) {}
+};
+struct tramplin : track_object {
+  void doing(car &mycar) {}
+  tramplin(double exx, double exy, Design exDesign)
+      : track_object(exx, exy, exDesign) {}
+};
 };  // namespace Objects

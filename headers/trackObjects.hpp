@@ -6,28 +6,29 @@
 4. разрыв дороги breakWay
 5. трамплин tramplin
 6. финиш finish
+7. деньги money
 */
 #pragma once
 #include "library.hpp"
 using namespace Drawer;
 using namespace Objects;
-// colorContainer_type bigQuadColor1{{0.2, 0.2, 0.7}};
+// описываем внешний вид бутылки
 colorContainer_type bottleColor{
     {0.41, 0.4, 0.7}, {0.4, 0.2, 0.7}, {0.3, 0.4, 0.7}, {0.3, 0.5, 0.2}};
 
-// colorContainer_type bottleMainColor{};
-// точки для
 Point b1 = {-0.1, -0.1};
 Point b2 = {-0.1, 0.1};
 Point b3 = {0.1, 0.1};
 Point b4 = {0.1, -0.1};
 
 container_type<Point> bottlePrototype{b1, b2, b3, b4};
+
 design bottleDesignEl1(bottlePrototype, bottleColor, typeDrawing::QUADS);
-// design bottleDesignEl2(b)
+
 container_type<design*> bottleDesignElems{&bottleDesignEl1};
 Design bottleDesign{bottleDesignElems};
 
+// описываем внешний вид шипов
 colorContainer_type spikesColorMain{{0.12, 0.12, 0.12},
                                     {0.12, 0.12, 0.12},
                                     {0.12, 0.12, 0.12},
@@ -83,6 +84,7 @@ design spikesTriangle(spikesTrianglePoints, spikesColor,
 container_type<design*> spikesDesignElems{&spikesMain, &spikesTriangle};
 Design spikesDesign{spikesDesignElems};
 
+// описываем внешний вид сердца
 colorContainer_type heartColor{
     {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}};
 // точки для сердца
@@ -111,8 +113,11 @@ container_type<Point> heartMainPoints{heartMainP1, heartMainP2, heartMainP3,
                                       heartMainP4, heartMainP5, heartMainP6,
                                       heartMainP7, heartMainP8};
 design heartMain(heartMainPoints, heartColorMain, typeDrawing::QUADS);
+
 container_type<design*> heartDesignElems{&heartTriangle, &heartMain};
 Design heartDesign{heartDesignElems};
-// монетки
 
-// design;
+// описываем внешний вид монеток
+// описываем внешний вид финиша
+// описываем внешний вид трамплина
+// описываем внешний вид разрыва дороги

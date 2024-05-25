@@ -4,18 +4,20 @@
 */
 #pragma once
 #include <GL/freeglut.h>
-#include <initializer_list>
 #include <GL/glut.h>
-#include <string>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
+#include <algorithm>
 #include <cmath>
 #include <ctime>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <initializer_list>
 #include <iostream>
+#include <set>
+#include <string>
+#include <vector>
+
 #include "objectsDefinition.hpp"
 /* пока не подключаем, еще не разобралися */
 // #include "musicMoment.hpp"

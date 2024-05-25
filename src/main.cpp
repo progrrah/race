@@ -1,8 +1,10 @@
 /*
-основной файл где инициализируется
+основной файл, где инициализируется
 */
 #include <GL/glut.h>
+
 #include <vector>
+
 #include "design.hpp"
 #include "interaction.hpp"
 template <typename T>

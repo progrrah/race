@@ -49,11 +49,10 @@ int playMusic(int argc, char** argv) {
     ma_decoder_uninit(&decoder);
     return -4;
   }
-//   ma_device_stop(&device);
+  //   ma_device_stop(&device);
 
   //   printf("Press Enter to quit...");
   //   getchar();
-  
 
   ma_device_uninit(&device);
   ma_decoder_uninit(&decoder);

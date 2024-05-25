@@ -1,16 +1,18 @@
 #pragma once
 #include <GL/freeglut.h>
 #include <GL/glut.h>
-#include <string>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+
+#include <algorithm>
 #include <cmath>
 #include <ctime>
-#include <vector>
-#include <algorithm>
-#include <set>
 #include <iostream>
+#include <set>
+#include <string>
+#include <vector>
+
 #include "library.hpp"
 namespace Interaction {
 using namespace Drawer;

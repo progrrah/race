@@ -3,10 +3,10 @@
 которых определены в mytrack.hpp, mycar.hpp, trackObjects.hpp
 */
 #pragma once
-#include "library.hpp"
-#include "mytrack.hpp"
-#include "mycar.hpp"
 #include "gameMenu.hpp"
+#include "library.hpp"
+#include "mycar.hpp"
+#include "mytrack.hpp"
 #include "trackObjects.hpp"
 using namespace Objects;
 using namespace Drawer;

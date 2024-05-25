@@ -105,7 +105,6 @@ void initOpengl() {
   glutInitWindowPosition(500, 500);
   glutCreateWindow("race");
   glClearColor(1, 1, 1, 1);
-
   glutKeyboardFunc(keyBoard);
   // how does it work
   selectDisplay();

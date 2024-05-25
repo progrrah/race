@@ -13,19 +13,31 @@
 using namespace Drawer;
 using namespace Objects;
 // описываем внешний вид бутылки
-colorContainer_type bottleColor{
-    {0.41, 0.4, 0.7}, {0.4, 0.2, 0.7}, {0.3, 0.4, 0.7}, {0.3, 0.5, 0.2}};
+colorContainer_type bottleMainColor{
+    {1, 0.4, 0.7}, {1, 0.6, 0.7}, {1, 0.8, 0.7}, {1, 0.8, 0.7}};
 
-Point b1 = {-0.05, -0.05};
-Point b2 = {-0.05, 0.05};
-Point b3 = {0.05, 0.05};
-Point b4 = {0.05, -0.05};
+Point b1 = {-0.03, -0.05};
+Point b2 = {-0.03, 0.05};
+Point b3 = {0.03, 0.05};
+Point b4 = {0.03, -0.05};
 
 container_type<Point> bottlePrototype{b1, b2, b3, b4};
+design bottleDesignEl1(bottlePrototype, bottleMainColor, typeDrawing::QUADS);
 
-design bottleDesignEl1(bottlePrototype, bottleColor, typeDrawing::QUADS);
+colorContainer_type bottleSmallColor{
+    {0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.9}};
 
-container_type<design*> bottleDesignElems{&bottleDesignEl1};
+Point bottleSmallPoint1 = {-0.02, 0.05};
+Point bottleSmallPoint2 = {-0.02, 0.06};
+Point bottleSmallPoint3 = {0.02, 0.06};
+Point bottleSmallPoint4 = {0.02, 0.05};
+
+container_type<Point> bottleSmallPoints{bottleSmallPoint1, bottleSmallPoint2,
+                                        bottleSmallPoint3, bottleSmallPoint4};
+
+design bottleDesignEl2(bottleSmallPoints, bottleSmallColor, typeDrawing::QUADS);
+
+container_type<design*> bottleDesignElems{&bottleDesignEl1, &bottleDesignEl2};
 Design bottleDesign{bottleDesignElems};
 
 // описываем внешний вид шипов

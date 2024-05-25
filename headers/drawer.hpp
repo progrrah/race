@@ -39,7 +39,7 @@ struct design {
   // container_type<typeDrawing> drawingMethods;
   typeDrawing drawingMethod;
   void draw(typeDrawing type);
-  design() = default;
+  design() {}
   design(container_type<Point> externPoints,
          container_type<container_type<double>> externColorList = rgblist,
          typeDrawing exdrawingMethod = typeDrawing::POINTS)

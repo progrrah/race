@@ -17,6 +17,8 @@ extern double deltaSpeed;
 extern double scaleX;
 extern double scaleY;
 extern bool EXIT_KEY_IN_INTERACTION;
+// void *fonts[] = {GLUT_BITMAP_9_BY_15, GLUT_BITMAP_TIMES_ROMAN_10,
+//                  GLUT_BITMAP_TIMES_ROMAN_24};
 
 namespace Objects {
 using namespace Drawer;
@@ -93,7 +95,7 @@ struct track_object {
   bool IS_STATIC;
   Design objectDesign;
   virtual void doing(car &mycar) = 0;
-  void drawObject() {
+  virtual void drawObject() {
     auto number = objectDesign.designs.size();
     for (size_t i = 0; i < number; i++) {
       auto designElems = objectDesign.designs.at(i);
@@ -163,5 +165,23 @@ struct tramplin : track_object {
   void doing(car &mycar) {}
   tramplin(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
+};
+struct text : track_object {
+  std::string message;
+  void *mainFont = GLUT_BITMAP_TIMES_ROMAN_24;
+  text(double exx, double exy, Design exDesign, bool key = false,
+       std::string msg = "hey")
+      : track_object(exx, exy, exDesign, key) {
+    message = msg;
+  }
+  void doing(car &mycar) {}
+  void drawObject() override {
+    int len, i;
+    glRasterPos2f(x, y);
+    len = message.size();
+    for (i = 0; i < len; i++) {
+      glutBitmapCharacter(mainFont, message[i]);
+    }
+  }
 };
 };  // namespace Objects

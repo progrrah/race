@@ -41,15 +41,15 @@ container_type<design*> bottleDesignElems{&bottleDesignEl1, &bottleDesignEl2};
 Design bottleDesign{bottleDesignElems};
 
 // описываем внешний вид шипов
-colorContainer_type spikesColorMain{{0.12, 0.12, 0.12},
-                                    {0.12, 0.12, 0.12},
-                                    {0.12, 0.12, 0.12},
-                                    {0.12, 0.12, 0.12}};
+colorContainer_type spikesColorMain{{0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},};
 // точки для большого прямоугольника
-Point spikesMainP1 = {-0.1, 0};
-Point spikesMainP2 = {-0.1, 0.1};
-Point spikesMainP3 = {0.1, 0.1};
-Point spikesMainP4 = {0.1, 0};
+Point spikesMainP1 = {-0.05, 0};
+Point spikesMainP2 = {-0.05, 0.05};
+Point spikesMainP3 = {0.05, 0.05};
+Point spikesMainP4 = {0.05, 0};
 
 container_type<Point> spikesMainPoints{spikesMainP1, spikesMainP2, spikesMainP3,
                                        spikesMainP4};
@@ -57,32 +57,32 @@ container_type<Point> spikesMainPoints{spikesMainP1, spikesMainP2, spikesMainP3,
 design spikesMain(spikesMainPoints, spikesColorMain, typeDrawing::QUADS);
 
 colorContainer_type spikesColor{
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
-    {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12}, {0.12, 0.12, 0.12},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+   {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
 };
 // точки для треугольников
-Point spikesTriangleP1 = {-0.1, 0};
-Point spikesTriangleP2 = {-0.2, 0.05};
-Point spikesTriangleP3 = {-0.1, 0.1};
-Point spikesTriangleP4 = {-0.1, 0.1};
-Point spikesTriangleP5 = {-0.05, 0.2};
-Point spikesTriangleP6 = {0, 0.1};
-Point spikesTriangleP7 = {0, 0.1};
-Point spikesTriangleP8 = {0.05, 0.2};
-Point spikesTriangleP9 = {0.1, 0.1};
-Point spikesTriangleP10 = {0.1, 0.1};
-Point spikesTriangleP11 = {0.2, 0.05};
-Point spikesTriangleP12 = {0.1, 0};
-Point spikesTriangleP13 = {-0.1, 0};
-Point spikesTriangleP14 = {-0.05, -0.1};
+Point spikesTriangleP1 = {-0.05, 0};
+Point spikesTriangleP2 = {-0.1, 0.025};
+Point spikesTriangleP3 = {-0.05, 0.05};
+Point spikesTriangleP4 = {-0.05, 0.05};
+Point spikesTriangleP5 = {-0.025, 0.1};
+Point spikesTriangleP6 = {0, 0.05};
+Point spikesTriangleP7 = {0, 0.05};
+Point spikesTriangleP8 = {0.025, 0.1};
+Point spikesTriangleP9 = {0.05, 0.05};
+Point spikesTriangleP10 = {0.05, 0.05};
+Point spikesTriangleP11 = {0.1, 0.025};
+Point spikesTriangleP12 = {0.05, 0};
+Point spikesTriangleP13 = {-0.05, 0};
+Point spikesTriangleP14 = {-0.025, -0.05};
 Point spikesTriangleP15 = {0, 0};
 Point spikesTriangleP16 = {0, 0};
-Point spikesTriangleP17 = {0.05, -0.1};
-Point spikesTriangleP18 = {0.1, 0};
+Point spikesTriangleP17 = {0.025, -0.05};
+Point spikesTriangleP18 = {0.05, 0};
 
 container_type<Point> spikesTrianglePoints{
     spikesTriangleP1,  spikesTriangleP2,  spikesTriangleP3,  spikesTriangleP4,
@@ -146,10 +146,10 @@ Design heartDesign{heartDesignElems};
 
 colorContainer_type moneyColor{
     // желтые для + бонусов
-    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
-    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
-    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
-    {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}};
+    {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0},
+    {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0},
+    {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0}, {1.0, 0.7, 0.0},
+    {1.0, 0.8, 0.0}, {1.0, 0.8, 0.0}, {1.0, 0.8, 0.0}, {1.0, 0.8, 0.0}};
 // точки для сердца
 Point MoneyP1 = {-0.05, 0.025};
 Point MoneyP2 = {-0.05, -0.025};
@@ -180,10 +180,10 @@ Design moneyDesign{moneyDesignElems};
 
 colorContainer_type moneyRedColor{
     // красные для - бонусов
-    {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
-    {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
-    {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
-    {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}};
+    {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0},
+    {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0},
+    {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0}, {0.7, 0.0, 0.0},
+    {0.7, 0.0, 0.3}, {0.7, 0.0, 0.3}, {0.7, 0.0, 0.3}, {0.7, 0.0, 0.3}};
 
 Point MoneyRedP1 = {-0.05, 0.025};
 Point MoneyRedP2 = {-0.05, -0.025};
@@ -246,16 +246,16 @@ colorContainer_type finishColor{
     {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
     {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
-    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},};
 // точки для сердца
-Point finishP1 = {-0.75, 0};
-Point finishP2 = {-0.75, 0.1};
+Point finishP1 = {-0.85, 0};
+Point finishP2 = {-0.85, 0.1};
 Point finishP3 = {-0.5, 0.1};
 Point finishP4 = {-0.5, 0};
-Point finishP5 = {-0.5, 0};
-Point finishP6 = {-0.5, 0.1};
-Point finishP7 = {-0.25, 0.1};
-Point finishP8 = {-0.25, 0};
+Point finishP5 = {-0.5, 0.1};
+Point finishP6 = {-0.25, 0.1};
+Point finishP7 = {-0.25, 0};
+Point finishP8 = {-0.5, 0};
 Point finishP9 = {-0.25, 0};
 Point finishP10 = {-0.25, 0.1};
 Point finishP11 = {0, 0.1};
@@ -270,17 +270,17 @@ Point finishP19 = {0.5, 0.1};
 Point finishP20 = {0.5, 0};
 Point finishP21 = {0.5, 0};
 Point finishP22 = {0.5, 0.1};
-Point finishP23 = {0.75, 0.1};
-Point finishP24 = {0.75, 0};
-Point finishP25 = {-0.75, 0};
+Point finishP23 = {0.85, 0.1};
+Point finishP24 = {0.85, 0};
+Point finishP25 = {-0.85, 0};
 Point finishP26 = {-0.5, 0};
 Point finishP27 = {-0.5, -0.1};
-Point finishP28 = {-0.75, -0.1};
+Point finishP28 = {-0.85, -0.1};
 Point finishP29 = {-0.5, 0};
 Point finishP30 = {-0.25, 0};
 Point finishP31 = {-0.25, -0.1};
 Point finishP32 = {-0.5, -0.1};
-Point finishP33 = {-0.75, 0};
+Point finishP33 = {-0.85, 0};
 Point finishP34 = {0, 0};
 Point finishP35 = {0, -0.1};
 Point finishP36 = {-0.25, -0.1};
@@ -293,8 +293,8 @@ Point finishP42 = {0.5, 0};
 Point finishP43 = {0.5, -0.1};
 Point finishP44 = {0.25, -0.1};
 Point finishP45 = {0.5, 0};
-Point finishP46 = {0.75, 0.1};
-Point finishP47 = {0.75, -0.1};
+Point finishP46 = {0.85, 0};
+Point finishP47 = {0.85, -0.1};
 Point finishP48 = {0.5, -0.1};
 
 container_type<Point> finishPoints{
@@ -305,8 +305,26 @@ container_type<Point> finishPoints{
     finishP29, finishP30, finishP31, finishP32, finishP33, finishP34, finishP35,
     finishP36, finishP37, finishP38, finishP39, finishP40, finishP41, finishP42,
     finishP43, finishP44, finishP45, finishP46, finishP47, finishP48};
-// дизайн треугсердца
+
 design finishDs1(finishPoints, finishColor, typeDrawing::QUADS);
 
 container_type<design*> finishDesignElems{&finishDs1};
 Design finishDesign{finishDesignElems};
+// трамплин tramplin
+colorContainer_type tramplinColor{
+    {0.6, 0.3, 0.5}, {0.6, 0.3, 0.5}, {0.6, 0.4, 0.4}, {0.6, 0.4, 0.4},
+    {0.6, 0.5, 0.6}, {0.6, 0.5, 0.6}, {0.6, 0.5, 0.6}, {0.6, 0.5, 0.6}};
+Point tramplinP1 = {-0.1, 0.15};
+Point tramplinP2 = {0.1, 0.15};
+Point tramplinP3 = {0.1, -0.1};
+Point tramplinP4 = {-0.1, -0.1};
+Point tramplinP5 = {-0.05, 0.15};
+Point tramplinP6 = {-0.05, 0.2};
+Point tramplinP7 = {0.05, 0.2};
+Point tramplinP8 = {0.05, 0.15};
+container_type<Point> tramplinPoints{tramplinP1, tramplinP2,tramplinP3, tramplinP4,
+                                      tramplinP5, tramplinP6,tramplinP7, tramplinP8};
+                                      
+design tramplinDs1(tramplinPoints, tramplinColor, typeDrawing::QUADS);
+container_type<design*> tramplinDesignElems{&tramplinDs1};
+Design tramplinDesign{tramplinDesignElems};

@@ -8,6 +8,7 @@
 #include "mycar.hpp"
 #include "mytrack.hpp"
 #include "trackObjects.hpp"
+// #include "interaction.hpp"
 using namespace Objects;
 using namespace Drawer;
 extern std::string BONUSES_IN_STRING;
@@ -61,14 +62,15 @@ money obj41(-0.1, 16, moneyRedDesign, -100);
 money obj42(0.7, 30, moneyRedDesign, -100);
 money obj43(-0.5, 34, moneyRedDesign, -100);
 money obj44(0.5, 40, moneyRedDesign, -100);
-money obj45(-0.2, 7, moneyRedDesign, -100);
+money obj45(-0.2, 8, moneyRedDesign, -100);
 money obj46(-0.1, 9, moneyRedDesign, -100);
 money obj47(0.7, 26, moneyRedDesign, -100);
 money obj48(-0.5, 28, moneyRedDesign, -100);
 money obj49(0.5, 33, moneyRedDesign, -100);
-breakWay obj50(0, -2, breakWayDesign);
-breakWay obj51(0, -2, breakWayDesign);
-finish obj52(0, 1, finishDesign);
+breakWay obj50(0, 12, breakWayDesign);
+breakWay obj51(0, 35, breakWayDesign);
+finish obj52(0, 10, finishDesign);
+tramplin obj53(0,11.5,tramplinDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{
@@ -77,7 +79,7 @@ container_type<track_object *> mytrackObjects{
     &obj19, &obj20, &obj21, &obj22, &obj23, &obj24, &obj25, &obj26, &obj27,
     &obj28, &obj29, &obj30, &obj31, &obj32, &obj33, &obj34, &obj35, &obj36,
     &obj37, &obj38, &obj39, &obj40, &obj41, &obj42, &obj43, &obj44, &obj45,
-    &obj46, &obj47, &obj48, &obj49, &obj50, &obj51, &obj52};
+    &obj46, &obj47, &obj48, &obj49, &obj50, &obj51, &obj52, &obj53};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины

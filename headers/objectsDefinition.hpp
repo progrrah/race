@@ -146,8 +146,7 @@ struct spikes : track_object {
   void doing(car &mycar) {
     mycar.speed -= deltaSpeed;
     mycar.lifes--;
-    // if (mycar.lifes == 0)
-    mycar.dead();
+    if (mycar.lifes == 0) mycar.dead();
   }
   spikes(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}

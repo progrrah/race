@@ -146,20 +146,32 @@ Design heartDesign{heartDesignElems};
 
 colorContainer_type moneyColor{
     // желтые для + бонусов
-    {1.0, 1.0, 0.0}, {1.0, 1.0, 0.0}, {1.0, 1.0, 0.0}, {1.0, 1.0, 0.0},
-    {1.0, 0.5, 0.0}, {1.0, 0.5, 0.0}, {1.0, 0.5, 0.0}, {1.0, 0.5, 0.0}};
+    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
+    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
+    {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0}, {0.9, 0.8, 0.0},
+    {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}, {0.9, 1.0, 0.3}};
 // точки для сердца
-Point MoneyP1 = {-0.05, -0.05};
-Point MoneyP2 = {-0.05, 0.05};
-Point MoneyP3 = {0.05, 0.05};
-Point MoneyP4 = {0.05, -0.05};
-Point MoneyP5 = {-0.025, -0.025};
-Point MoneyP6 = {-0.025, 0.025};
-Point MoneyP7 = {0.025, 0.025};
-Point MoneyP8 = {0.025, -0.025};
+Point MoneyP1 = {-0.05, 0.025};
+Point MoneyP2 = {-0.05, -0.025};
+Point MoneyP3 = {0.05, -0.025};
+Point MoneyP4 = {0.05, 0.025};
+Point MoneyP5 = {-0.05, 0.025};
+Point MoneyP6 = {-0.025, 0.05};
+Point MoneyP7 = {0.025, 0.05};
+Point MoneyP8 = {0.05, 0.025};
+Point MoneyP9 = {-0.05, -0.025};
+Point MoneyP10 = {-0.025, -0.05};
+Point MoneyP11 = {0.025, -0.05};
+Point MoneyP12 = {0.05, -0.025};
+Point MoneyP13 = {-0.025, 0.025};
+Point MoneyP14 = {-0.025, -0.025};
+Point MoneyP15 = {0.025, -0.025};
+Point MoneyP16 = {0.025, 0.025};
 
-container_type<Point> moneyPoints{MoneyP1, MoneyP2, MoneyP3, MoneyP4,
-                                  MoneyP5, MoneyP6, MoneyP7, MoneyP8};
+container_type<Point> moneyPoints{MoneyP1,  MoneyP2,  MoneyP3,  MoneyP4,
+                                  MoneyP5,  MoneyP6,  MoneyP7,  MoneyP8,
+                                  MoneyP9,  MoneyP10, MoneyP11, MoneyP12,
+                                  MoneyP13, MoneyP14, MoneyP15, MoneyP16};
 // дизайн треугсердца
 design moneymoney(moneyPoints, moneyColor, typeDrawing::QUADS);
 
@@ -169,36 +181,47 @@ Design moneyDesign{moneyDesignElems};
 colorContainer_type moneyRedColor{
     // красные для - бонусов
     {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
+    {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
+    {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {1.0, 0.0, 0.0},
     {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}, {1.0, 0.1, 0.1}};
-// точки для сердца
-Point MoneyRedP1 = {-0.05, -0.05};
-Point MoneyRedP2 = {-0.05, 0.05};
-Point MoneyRedP3 = {0.05, 0.05};
-Point MoneyRedP4 = {0.05, -0.05};
-Point MoneyRedP5 = {-0.025, -0.025};
-Point MoneyRedP6 = {-0.025, 0.025};
-Point MoneyRedP7 = {0.025, 0.025};
-Point MoneyRedP8 = {0.025, -0.025};
 
-container_type<Point> moneyRedPoints{MoneyRedP1, MoneyRedP2, MoneyRedP3,
-                                     MoneyRedP4, MoneyRedP5, MoneyRedP6,
-                                     MoneyRedP7, MoneyRedP8};
+Point MoneyRedP1 = {-0.05, 0.025};
+Point MoneyRedP2 = {-0.05, -0.025};
+Point MoneyRedP3 = {0.05, -0.025};
+Point MoneyRedP4 = {0.05, 0.025};
+Point MoneyRedP5 = {-0.05, 0.025};
+Point MoneyRedP6 = {-0.025, 0.05};
+Point MoneyRedP7 = {0.025, 0.05};
+Point MoneyRedP8 = {0.05, 0.025};
+Point MoneyRedP9 = {-0.05, -0.025};
+Point MoneyRedP10 = {-0.025, -0.05};
+Point MoneyRedP11 = {0.025, -0.05};
+Point MoneyRedP12 = {0.05, -0.025};
+Point MoneyRedP13 = {-0.025, 0.025};
+Point MoneyRedP14 = {-0.025, -0.025};
+Point MoneyRedP15 = {0.025, -0.025};
+Point MoneyRedP16 = {0.025, 0.025};
+
+container_type<Point> moneyRedPoints{
+    MoneyRedP1,  MoneyRedP2,  MoneyRedP3,  MoneyRedP4,
+    MoneyRedP5,  MoneyRedP6,  MoneyRedP7,  MoneyRedP8,
+    MoneyRedP9,  MoneyRedP10, MoneyRedP11, MoneyRedP12,
+    MoneyRedP13, MoneyRedP14, MoneyRedP15, MoneyRedP16};
 // дизайн треугсердца
 design moneyRedmoney(moneyRedPoints, moneyRedColor, typeDrawing::QUADS);
 
 container_type<design*> moneyRedDesignElems{&moneyRedmoney};
 Design moneyRedDesign{moneyRedDesignElems};
 
-// описываем внешний вид финиша
 // описываем внешний вид трамплина
 // описываем внешний вид разрыва дороги
 colorContainer_type breakWayColor{
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};
 // точки для большого прямоугольника
-Point breakWayP1 = {-0.75, 0};
-Point breakWayP2 = {-0.75, 0.1};
-Point breakWayP3 = {0.75, 0.1};
-Point breakWayP4 = {0.75, 0};
+Point breakWayP1 = {-0.85, 0};
+Point breakWayP2 = {-0.85, 0.1};
+Point breakWayP3 = {0.85, 0.1};
+Point breakWayP4 = {0.85, 0};
 
 container_type<Point> breakWayPoints{breakWayP1, breakWayP2, breakWayP3,
                                      breakWayP4};
@@ -208,3 +231,82 @@ design breakWayDs1(breakWayPoints, breakWayColor, typeDrawing::QUADS);
 container_type<design*> breakWayDesignElems{&breakWayDs1};
 
 Design breakWayDesign{breakWayDesignElems};
+
+// описываем внешний вид финиша
+colorContainer_type finishColor{
+    // желтые для + бонусов
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+    {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};
+// точки для сердца
+Point finishP1 = {-0.75, 0};
+Point finishP2 = {-0.75, 0.1};
+Point finishP3 = {-0.5, 0.1};
+Point finishP4 = {-0.5, 0};
+Point finishP5 = {-0.5, 0};
+Point finishP6 = {-0.5, 0.1};
+Point finishP7 = {-0.25, 0.1};
+Point finishP8 = {-0.25, 0};
+Point finishP9 = {-0.25, 0};
+Point finishP10 = {-0.25, 0.1};
+Point finishP11 = {0, 0.1};
+Point finishP12 = {0, 0};
+Point finishP13 = {0, 0};
+Point finishP14 = {0, 0.1};
+Point finishP15 = {0.25, 0.1};
+Point finishP16 = {0.25, 0};
+Point finishP17 = {0.25, 0};
+Point finishP18 = {0.25, 0.1};
+Point finishP19 = {0.5, 0.1};
+Point finishP20 = {0.5, 0};
+Point finishP21 = {0.5, 0};
+Point finishP22 = {0.5, 0.1};
+Point finishP23 = {0.75, 0.1};
+Point finishP24 = {0.75, 0};
+Point finishP25 = {-0.75, 0};
+Point finishP26 = {-0.5, 0};
+Point finishP27 = {-0.5, -0.1};
+Point finishP28 = {-0.75, -0.1};
+Point finishP29 = {-0.5, 0};
+Point finishP30 = {-0.25, 0};
+Point finishP31 = {-0.25, -0.1};
+Point finishP32 = {-0.5, -0.1};
+Point finishP33 = {-0.75, 0};
+Point finishP34 = {0, 0};
+Point finishP35 = {0, -0.1};
+Point finishP36 = {-0.25, -0.1};
+Point finishP37 = {0, 0};
+Point finishP38 = {0.25, 0};
+Point finishP39 = {0.25, -0.1};
+Point finishP40 = {0, -0.1};
+Point finishP41 = {0.25, 0};
+Point finishP42 = {0.5, 0};
+Point finishP43 = {0.5, -0.1};
+Point finishP44 = {0.25, -0.1};
+Point finishP45 = {0.5, 0};
+Point finishP46 = {0.75, 0.1};
+Point finishP47 = {0.75, -0.1};
+Point finishP48 = {0.5, -0.1};
+
+container_type<Point> finishPoints{
+    finishP1,  finishP2,  finishP3,  finishP4,  finishP5,  finishP6,  finishP7,
+    finishP8,  finishP9,  finishP10, finishP11, finishP12, finishP13, finishP14,
+    finishP15, finishP16, finishP17, finishP18, finishP19, finishP20, finishP21,
+    finishP22, finishP23, finishP24, finishP25, finishP26, finishP27, finishP28,
+    finishP29, finishP30, finishP31, finishP32, finishP33, finishP34, finishP35,
+    finishP36, finishP37, finishP38, finishP39, finishP40, finishP41, finishP42,
+    finishP43, finishP44, finishP45, finishP46, finishP47, finishP48};
+// дизайн треугсердца
+design finishDs1(finishPoints, finishColor, typeDrawing::QUADS);
+
+container_type<design*> finishDesignElems{&finishDs1};
+Design finishDesign{finishDesignElems};

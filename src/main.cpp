@@ -7,6 +7,7 @@
 
 #include "design.hpp"
 #include "interaction.hpp"
+#include "library.hpp"
 template <typename T>
 using container_type = std::vector<T>;
 using namespace Interaction;
@@ -17,7 +18,6 @@ extern const int SHIFTING_TIME;
 extern const int WIDTH;   // window width
 extern const int HEIGHT;  // window height
 extern const float POINT_RADIUS;
-extern container_type<container_type<double>> rgblist;
 extern bool EXIT_KEY_IN_INTERACTION;
 extern bool SELECT_KEY_WINDOW;
 extern int SELECT_KEY_DISPLAY;
@@ -37,6 +37,16 @@ void initOpengl();
 static void RenderSceneCB_win1();
 static void RenderSceneCB_win2();
 void useTwoWindow();
+// void selectDisplay();
+// void displayStartMenu();
+// void displayEndMenu();
+// void displayGame();
+// void displayTroll();
+
+// void initOpengl();
+// static void RenderSceneCB_win1();
+// static void RenderSceneCB_win2();
+// void useTwoWindow();
 int main(int argc, char **argv) {
   // char *file = "Main.wav";
   fileName = argv;
@@ -45,22 +55,7 @@ int main(int argc, char **argv) {
   glutMainLoop();
   return 0;
 }
-void selectDisplay() {
-  switch (SELECT_KEY_DISPLAY) {
-    case 0:
-      glutDisplayFunc(displayStartMenu);
-      break;
-    case 1:
-      glutDisplayFunc(displayGame);
-      break;
-    case 2:
-      glutDisplayFunc(displayEndMenu);
-      break;
-    default:
-      displayTroll();
-      break;
-  }
-}
+
 void displayGame() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   doTransformTrack();
@@ -112,6 +107,22 @@ void initOpengl() {
   selectDisplay();
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
   // glutTimerFunc(SHIFTING_TIME, moveALL, 0);
+}
+void selectDisplay() {
+  switch (SELECT_KEY_DISPLAY) {
+    case 0:
+      glutDisplayFunc(displayStartMenu);
+      break;
+    case 1:
+      glutDisplayFunc(displayGame);
+      break;
+    case 2:
+      glutDisplayFunc(displayEndMenu);
+      break;
+    default:
+      displayTroll();
+      break;
+  }
 }
 
 static void RenderSceneCB_win1() {

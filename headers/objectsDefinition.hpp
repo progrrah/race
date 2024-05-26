@@ -102,6 +102,7 @@ struct track_object {
       designElems->draw(designElems->drawingMethod);
     }
   }
+  track_object(){};
   track_object(double exx, double exy, Design exDesign, bool static_key = false)
       : x(exx), y(exy), objectDesign(exDesign), IS_STATIC(static_key){};
 };
@@ -168,11 +169,23 @@ struct tramplin : track_object {
 };
 struct text : track_object {
   std::string message;
-  void *mainFont = GLUT_BITMAP_TIMES_ROMAN_24;
+  bool COLOR_RICHNESS;
+  colorContainer_type color;
+  void *mainFont = GLUT_BITMAP_HELVETICA_18;
+  // void *mainFont = GLUT_BITMAP_HELVETICA_12;
+  // void *mainFont = GLUT_BITMAP_TIMES_ROMAN_24;
+  text(){};
   text(double exx, double exy, Design exDesign, bool key = false,
        std::string msg = "hey")
       : track_object(exx, exy, exDesign, key) {
     message = msg;
+  }
+  text(double exx, double exy, Design exDesign, colorContainer_type exColor,
+       bool key = false, std::string msg = "hey")
+      : track_object(exx, exy, exDesign, key) {
+    color = exColor;
+    message = msg;
+    COLOR_RICHNESS = true;
   }
   void doing(car &mycar) {}
   void drawObject() override {
@@ -180,6 +193,12 @@ struct text : track_object {
     glRasterPos2f(x, y);
     len = message.size();
     for (i = 0; i < len; i++) {
+      if (COLOR_RICHNESS && color.size() == message.size()) {
+        glColor3d(color[i][0], color[i][1], color[i][2]);
+      }
+
+      else
+        glColor3d(0, 0, 0);
       glutBitmapCharacter(mainFont, message[i]);
     }
   }

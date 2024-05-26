@@ -58,18 +58,18 @@ money obj37(-0.4, 36, moneyDesign);
 money obj38(-0.5, 39, moneyDesign);
 money obj39(0.3, 43, moneyDesign);
 money obj40(-0.2, 5, moneyRedDesign, -100);
-money obj41(-0.1, 16, moneyRedDesign);
-money obj42(0.7, 30, moneyRedDesign);
-money obj43(-0.5, 34, moneyRedDesign);
-money obj44(0.5, 40, moneyRedDesign);
-money obj45(-0.2, 7, moneyRedDesign);
-money obj46(-0.1, 9, moneyRedDesign);
-money obj47(0.7, 26, moneyRedDesign);
-money obj48(-0.5, 28, moneyRedDesign);
-money obj49(0.5, 33, moneyRedDesign);
+money obj41(-0.1, 16, moneyRedDesign, -100);
+money obj42(0.7, 30, moneyRedDesign, -100);
+money obj43(-0.5, 34, moneyRedDesign, -100);
+money obj44(0.5, 40, moneyRedDesign, -100);
+money obj45(-0.2, 7, moneyRedDesign, -100);
+money obj46(-0.1, 9, moneyRedDesign, -100);
+money obj47(0.7, 26, moneyRedDesign, -100);
+money obj48(-0.5, 28, moneyRedDesign, -100);
+money obj49(0.5, 33, moneyRedDesign, -100);
 breakWay obj50(0, 10, breakWayDesign);
 breakWay obj51(0, 35, breakWayDesign);
-finish obj52(0, 48, finishDesign);
+finish obj52(0, 10, finishDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{
@@ -92,37 +92,3 @@ track mytrack{trackDesign, mytrackObjects};
 в начале игры
 */
 car mycar{0, -0.425, dcar, 0, 2, 500};
-
-/*
-внутриигровая менюшка времени, жизней, бонусов и тд
-*/
-
-money bottleinMenu(-0.80, 0.9, moneyDesign, 100, true);
-heart menuHeart(-0.6, 0.9, heartDesign, true);
-// for correct color selecting
-
-std::string textString = "LOLOL";
-// text textRandom(-1, -1, textDesign, true, "lol");
-
-// colorContainer_type textLifesColorList{{0.9, 0., 1.},
-//                                        {0.2, 0.3, 1.},
-//                                        {0.9, 0., 0.9},
-//                                        {0.9, 0.3, 1.},
-//                                        {0.3, 0.9, 1.}};
-// text textLifes(-0.32, 0.4, textDesign, textLifesColorList, true, "lifes");
-// text textMoney(-0.42, 0.4, textDesign, true, "money");
-// text textNumberMoney(-0.3, 0.38, textDesign, true, "2");
-// text textNumberLifes(-0.42, 0.38, textDesign, true, "2000");
-
-// container_type<track_object *> menuElems{
-//     &bottleinMenu, &menuHeart,       &textRandom,     &textMoney,
-//     &textLifes,    &textNumberMoney, &textNumberLifes};
-text textTemplate(0., 0., textDesign, true, &textString);
-text textBonus(-0.42, 0.38, textDesign, true, &BONUSES_IN_STRING);
-text textTime(-0.42, 0.28, textDesign, true, &TIME_IN_STRING);
-text textLifes(-0.42, 0.18, textDesign, true, &LIFES_IN_STRING);
-
-container_type<track_object *> menuElems{&textTemplate, &textBonus,
-                                         &textTime,     &textLifes,
-                                         &bottleinMenu, &menuHeart};
-track menuGame{gameMenuDesign, menuElems};

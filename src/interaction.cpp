@@ -10,13 +10,13 @@ double YY = mycar.initY;
 double XX = 0;
 double trackPhi = 0;
 double carPhi = 0;
-double deltaPhi = 5;
-double deltay = 0.05;
+double deltaPhi = 100;
+double deltay = 0.1;
 double deltax = 0.1;
 double deltaSpeed = 0.1;
 double scaleX = 1;
 double scaleY = 1;
-bool EXIT_KEY_IN_INTERACTION = 0;
+bool EXIT_KEY_IN_INTERACTION = false;
 int SELECT_KEY_DISPLAY = 1;
 int step_number = 1;
 std::string line_1 = "----------------------------------------";
@@ -50,9 +50,9 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
       break;
   }
 };
-void Interaction::redisplayTimer(int) {
+// USE STACK FOR DRAWING NEEDED TRACKOBJECTS
+void Interaction::redisplayTimer(int value) {
   TIME += REDISPLAY_TIME;
-  // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
   auto fooPrint = [=]() {
     std::cout << "IT'S " << step_number++ << "' step!!!" << std::endl;
     std::cout << line_1 << std::endl;
@@ -63,9 +63,12 @@ void Interaction::redisplayTimer(int) {
     TIME_IN_STRING = std::to_string(TIME / 1000);
   };
   changeYY(deltay);
-  interact(mytrack, mycar);
   updateInformationCar();
   glutPostRedisplay();
+  if (!EXIT_KEY_IN_INTERACTION)
+    interact(mytrack, mycar);
+  else
+    mycar.animate();
   // TODO : INFORMATION OUTPUT PROCESSING
   // updateInformationAboutCar
   // updateInformationAboutTrack
@@ -144,7 +147,7 @@ void Interaction::drawALL() {
 
 void Interaction::doTransformTrack() { glRotated(trackPhi, 0, 0, 1); }
 void Interaction::doTransformCar() {
-  glRotated(carPhi, 0, 0, 1);
+  glRotated(carPhi, mycar.x, mycar.y, 1);
   glTranslated(mycar.x, 0, 0);
   glTranslated(0, YY, 0);
   glScaled(scaleX, scaleY, 0);

@@ -6,11 +6,12 @@ template <typename T>
 using container_type = std::vector<T>;
 using colorContainer_type = container_type<container_type<double>>;
 const float POINT_RADIUS = 6.0f;
-const double deltaScaled = 1.01;
+const double deltaScaled = 1.05;
 extern char **fileName;
 extern double YY;
 extern double XX;
 extern double carPhi;
+extern double deltaPhi;
 extern double deltay;
 extern double deltax;
 extern double deltaSpeed;
@@ -71,10 +72,16 @@ struct car {
     scaleY /= deltaxScaledy;
     this->width /= deltaxScaledx;
     this->height /= deltaxScaledy;
+    carPhi += deltaPhi;
   };
   void setSpeed(double newspeed) { speed = newspeed; }
   void dead() {
     lifes = 0;
+    EXIT_KEY_IN_INTERACTION = true;
+    for (int i{}; i < 10; i++) {
+      animate();
+      // glutPostRedisplay();
+    }
     // TODO draw dead animation
     // gameEndDisplay()
   }
@@ -137,7 +144,8 @@ struct spikes : track_object {
   void doing(car &mycar) {
     mycar.speed -= deltaSpeed;
     mycar.lifes--;
-    if (mycar.lifes == 0) mycar.dead();
+    // if (mycar.lifes == 0)
+    mycar.dead();
   }
   spikes(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
@@ -145,7 +153,6 @@ struct spikes : track_object {
 struct bottle : track_object {
   void doing(car &mycar) override {
     std::cout << "CONCRET DOING" << std::endl;
-    EXIT_KEY_IN_INTERACTION = 1;
     deltax = -deltax;
     scaleX *= deltaScaled;
     scaleY *= deltaScaled;
@@ -161,7 +168,10 @@ struct finish : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct breakWay : track_object {
-  void doing(car &mycar) { std::cout << "concret doing" << std::endl; }
+  void doing(car &mycar) {
+    mycar.dead();
+    std::cout << "concret doing" << std::endl;
+  }
   breakWay(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };

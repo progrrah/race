@@ -8,8 +8,12 @@
 #include "mycar.hpp"
 #include "mytrack.hpp"
 #include "trackObjects.hpp"
+// #include "interaction.hpp"
 using namespace Objects;
 using namespace Drawer;
+extern std::string BONUSES_IN_STRING;
+extern std::string LIFES_IN_STRING;
+extern std::string TIME_IN_STRING;
 /* перечисляем все объекты которые будут рисоваться на карте, то есть определяем
  * координаты х и у на которых они будут находится и тот дизайн который будет
  * использоваться для этого объекта*/
@@ -53,7 +57,7 @@ money obj36(0.3, 32, moneyDesign);
 money obj37(-0.4, 36, moneyDesign);
 money obj38(-0.5, 39, moneyDesign);
 money obj39(0.3, 43, moneyDesign);
-money obj40(-0.2, 5, moneyRedDesign);
+money obj40(-0.2, 5, moneyRedDesign, -100);
 money obj41(-0.1, 16, moneyRedDesign);
 money obj42(0.7, 30, moneyRedDesign);
 money obj43(-0.5, 34, moneyRedDesign);
@@ -87,7 +91,7 @@ track mytrack{trackDesign, mytrackObjects};
 создаем машину, определяя начальные координаты, дизайн, скорость, жизни, бонусы
 в начале игры
 */
-car mycar{0, -0.425, dcar, 0, 2, 0};
+car mycar{0, -0.425, dcar, 0, 2, 500};
 
 /*
 внутриигровая менюшка времени, жизней, бонусов и тд
@@ -96,19 +100,26 @@ car mycar{0, -0.425, dcar, 0, 2, 0};
 money bottleinMenu(-0.77, 0.9, moneyDesign, true);
 heart menuHeart(-0.6, 0.9, heartDesign, true);
 // for correct color selecting
-text textRandom(-1, -1, textDesign, true, "lol");
 
-colorContainer_type textLifesColorList{{0.9, 0., 1.},
-                                       {0.2, 0.3, 1.},
-                                       {0.9, 0., 0.9},
-                                       {0.9, 0.3, 1.},
-                                       {0.3, 0.9, 1.}};
-text textLifes(-0.32, 0.4, textDesign, textLifesColorList, true, "lifes");
-text textMoney(-0.42, 0.4, textDesign, true, "money");
-text textNumberMoney(-0.3, 0.38, textDesign, true, "2");
-text textNumberLifes(-0.42, 0.38, textDesign, true, "2000");
+std::string textString = "LOLOL";
+// text textRandom(-1, -1, textDesign, true, "lol");
 
-container_type<track_object *> menuElems{
-    &bottleinMenu, &menuHeart,       &textRandom,     &textMoney,
-    &textLifes,    &textNumberMoney, &textNumberLifes};
+// colorContainer_type textLifesColorList{{0.9, 0., 1.},
+//                                        {0.2, 0.3, 1.},
+//                                        {0.9, 0., 0.9},
+//                                        {0.9, 0.3, 1.},
+//                                        {0.3, 0.9, 1.}};
+// text textLifes(-0.32, 0.4, textDesign, textLifesColorList, true, "lifes");
+// text textMoney(-0.42, 0.4, textDesign, true, "money");
+// text textNumberMoney(-0.3, 0.38, textDesign, true, "2");
+// text textNumberLifes(-0.42, 0.38, textDesign, true, "2000");
+
+// container_type<track_object *> menuElems{
+//     &bottleinMenu, &menuHeart,       &textRandom,     &textMoney,
+//     &textLifes,    &textNumberMoney, &textNumberLifes};
+text textTemplate(0., 0., textDesign, true, &textString);
+text textBonus(-0.42, 0.38, textDesign, true, &BONUSES_IN_STRING);
+text textTime(-0.42, 0.28, textDesign, true, &TIME_IN_STRING);
+
+container_type<track_object *> menuElems{&textTemplate, &textBonus, &textTime};
 track menuGame{gameMenuDesign, menuElems};

@@ -2,22 +2,30 @@
 extern Objects::car mycar;
 extern Objects::track mytrack;
 extern Objects::bottle obj1;
+
 extern char **fileName;
+extern const int REDISPLAY_TIME;
+
 double YY = mycar.initY;
 double XX = 0;
 double trackPhi = 0;
 double carPhi = 0;
 double deltaPhi = 5;
-double deltay = 0.1;
-double deltax = 0.2;
+double deltay = 0.05;
+double deltax = 0.1;
 double deltaSpeed = 0.1;
 double scaleX = 1;
 double scaleY = 1;
 bool EXIT_KEY_IN_INTERACTION = 0;
 int SELECT_KEY_DISPLAY = 1;
+int step_number = 1;
 std::string line_1 = "----------------------------------------";
 std::string line_2 = "";
-int step_number = 1;
+
+std::string BONUSES_IN_STRING;
+std::string LIFSE_IN_STRING;
+std::string TIME_IN_STRING;
+int TIME;
 // DONE
 // CREATE A CANDRAW FUNCTION IN HERE
 void Interaction::keyBoard(unsigned char key, int x, int y) {
@@ -45,21 +53,34 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
   }
 };
 void Interaction::redisplayTimer(int) {
+  TIME += REDISPLAY_TIME;
+  // TIMER
   // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
   auto fooPrint = [=]() {
     std::cout << "IT'S " << step_number++ << "' step!!!" << std::endl;
     std::cout << line_1 << std::endl;
   };
-  interact(mytrack, mycar);
-  glutPostRedisplay();
+  auto updateInformationCar = []() {
+    BONUSES_IN_STRING = std::to_string(mycar.bonus);
+    LIFSE_IN_STRING = std::to_string(mycar.lifes);
+    TIME_IN_STRING = std::to_string(TIME / 1000);
+  };
   changeYY(deltay);
+  interact(mytrack, mycar);
+  updateInformationCar();
+  glutPostRedisplay();
+  // TODO : INFORMATION OUTPUT PROCESSING
+  // updateInformationAboutCar
+  // updateInformationAboutTrack
+  // updateInformationAboutTime
   // playMusic(2, fileName);
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
 }
 void Interaction::changeXX(double deltax) {
-  if (mycar.x + mycar.width / 2 <= 1 && deltax >= 0)
+  // auto mycarWIDTH = mycar.width / 2 + mycar.carDesign.
+  if (mycar.x + mycar.width / 2 <= 0.85 - deltax && deltax >= 0)
     mycar.x += deltax;
-  else if (mycar.x - mycar.width / 2 >= -1 && deltax < 0)
+  else if (mycar.x - mycar.width / 2 >= -0.85 - deltax && deltax < 0)
     mycar.x += deltax;
 }
 void Interaction::changeYY(double deltay) { mycar.y += deltay; }

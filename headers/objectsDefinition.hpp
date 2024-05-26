@@ -127,8 +127,11 @@ struct money : track_object {
       mycar.bonus -= 1000;
     }
   }
-  money(double exx, double exy, Design exDesign, bool key = false)
-      : track_object(exx, exy, exDesign, key) {}
+  money(double exx, double exy, Design exDesign, int exBonus = 100,
+        bool key = false)
+      : track_object(exx, exy, exDesign, key) {
+    bonus = exBonus;
+  }
 };
 struct spikes : track_object {
   void doing(car &mycar) {
@@ -168,7 +171,7 @@ struct tramplin : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct text : track_object {
-  std::string message;
+  std::string *message;
   bool COLOR_RICHNESS;
   colorContainer_type color;
   void *mainFont = GLUT_BITMAP_HELVETICA_18;
@@ -176,12 +179,12 @@ struct text : track_object {
   // void *mainFont = GLUT_BITMAP_TIMES_ROMAN_24;
   text(){};
   text(double exx, double exy, Design exDesign, bool key = false,
-       std::string msg = "hey")
+       std::string *msg = nullptr)
       : track_object(exx, exy, exDesign, key) {
     message = msg;
   }
   text(double exx, double exy, Design exDesign, colorContainer_type exColor,
-       bool key = false, std::string msg = "hey")
+       bool key = false, std::string *msg = nullptr)
       : track_object(exx, exy, exDesign, key) {
     color = exColor;
     message = msg;
@@ -191,15 +194,15 @@ struct text : track_object {
   void drawObject() override {
     int len, i;
     glRasterPos2f(x, y);
-    len = message.size();
+    len = message->size();
     for (i = 0; i < len; i++) {
-      if (COLOR_RICHNESS && color.size() == message.size()) {
+      if (COLOR_RICHNESS && color.size() == message->size()) {
         glColor3d(color[i][0], color[i][1], color[i][2]);
       }
 
       else
         glColor3d(0, 0, 0);
-      glutBitmapCharacter(mainFont, message[i]);
+      glutBitmapCharacter(mainFont, message->at(i));
     }
   }
 };

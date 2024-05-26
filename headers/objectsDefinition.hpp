@@ -26,13 +26,11 @@ using namespace Drawer;
 struct track_object;
 struct track {
   int number_elems;
-  const int track_details_numbers;
   container_type<track_object *> elems;
   Design trackDesign;
-  track() = default;
+  track(){};
   track(Design extrackDesign, container_type<track_object *> exelems)
       : number_elems(exelems.size()),
-        track_details_numbers(extrackDesign.designs.size()),
         trackDesign(extrackDesign),
         elems(exelems) {}
 
@@ -41,9 +39,13 @@ struct track {
       this->elems.push_back(i);
     }
   }
-  void clearElems();
+  void clearElems() {
+    for (auto const &i : elems) {
+      this->elems.pop_back();
+    }
+  }
   void drawTrack() {
-    for (int i{}; i < track_details_numbers; i++) {
+    for (int i{}; i < trackDesign.designs.size(); i++) {
       auto trackDesignElems = trackDesign.designs.at(i);
       trackDesignElems->draw(trackDesignElems->drawingMethod);
     }
@@ -202,6 +204,10 @@ struct text : track_object {
   }
   void doing(car &mycar) {}
   void drawObject() override {
+    if (!message) {
+      std::cerr << "MESSAGE DONT EXIST";
+      return;
+    }
     int len, i;
     glRasterPos2f(x, y);
     len = message->size();
@@ -216,4 +222,10 @@ struct text : track_object {
     }
   }
 };
+struct block : track_object {
+  void doing(car &mycar) {}
+  block(double exx, double exy, Design exDesign, bool key = false)
+      : track_object(exx, exy, exDesign, key) {}
+};
+
 };  // namespace Objects

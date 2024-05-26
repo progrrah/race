@@ -12,7 +12,7 @@ double trackPhi = 0;
 double carPhi = 0;
 double deltaPhi = 100;
 double deltay = 0.1;
-double deltax = 0.1;
+double deltax = 0.05;
 double deltaSpeed = 0.1;
 double scaleX = 1;
 double scaleY = 1;
@@ -105,8 +105,8 @@ void Interaction::interact(track &mytrack, car &mycar) {
   auto ycar = (mycar.y + YY - accurancy * hcar);
   // auto LEVEL_LENGTH = mytrack.trackDesign.at(0).height - hcar / 2;
   for (auto &trackOb : mytrack.elems) {
-    auto wobj = trackOb->objectDesign.designs.at(0)->width;
-    auto hobj = trackOb->objectDesign.designs.at(0)->height;
+    auto wobj = trackOb->objectDesign.width;
+    auto hobj = trackOb->objectDesign.height;
     auto xobj = trackOb->x;
     auto yobj = trackOb->y;
     auto fooPrint = [=]() {

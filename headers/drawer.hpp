@@ -9,7 +9,7 @@ template <typename T>
 using container_type = std::vector<T>;
 extern container_type<container_type<double>> rgblist;
 namespace Drawer {
-enum class typeDrawing { QUADS, TRIANGLES, POLYGONS, CIRCLES, POINTS };
+enum class typeDrawing { QUADS, TRIANGLES, POLYGONS, CIRCLES, POINTS, LINES };
 struct Point {
   double x, y;
   bool operator==(const Point &other) const {
@@ -32,21 +32,22 @@ struct Point {
 };
 
 struct design {
+  double WIDTH_LINES_OR_POINTS;
   int numberPoints;
-  container_type<Point> points; /*size it numberPoints*/
+  container_type<Point> points;
   double width, height;
   container_type<container_type<double>> colorList;
-  // container_type<typeDrawing> drawingMethods;
   typeDrawing drawingMethod;
   void draw(typeDrawing type);
   design() {}
   design(container_type<Point> externPoints,
-         container_type<container_type<double>> externColorList = rgblist,
-         typeDrawing exdrawingMethod = typeDrawing::POINTS)
+         container_type<container_type<double>> externColorList,
+         typeDrawing exdrawingMethod = typeDrawing::POINTS, double exWIDTH = 0)
       : numberPoints(externPoints.size()),
         points(externPoints),
         colorList(externColorList),
-        drawingMethod(exdrawingMethod) {
+        drawingMethod(exdrawingMethod),
+        WIDTH_LINES_OR_POINTS(exWIDTH) {
     calculateSizes();
   };
   void calculateSizes() {
@@ -67,8 +68,8 @@ struct design {
   void inputPoints() {
     std::cout << "Ввод точки в систему";
     Point p;
-    double x;
-    double y;
+    double x{};
+    double y{};
     std::cin >> x;
     std::cin >> y;
     if (x >= -1 && x <= 1) {
@@ -88,8 +89,19 @@ struct design {
 };
 struct Design {
   container_type<design *> designs;
+  double width;
+  double height;
+  Design() : width(0), height(0) {}
+  Design(container_type<design *> exdesins) : designs(exdesins) {
+    // if you dont init then 3 10^328 for example we have
+    double tempW{0};
+    double tempH{0};
+    for (size_t i = 0; i < designs.size(); i++) {
+      tempW += designs.at(i)->width;
+      tempH += designs.at(i)->height;
+    }
+    width = tempW;
+    height = tempH;
+  }
 };
-
-template <typename T>
-class gigaInitList : std::initializer_list<T> {};
 };  // namespace Drawer

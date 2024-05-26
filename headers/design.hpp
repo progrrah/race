@@ -8,7 +8,6 @@
 #include "mycar.hpp"
 #include "mytrack.hpp"
 #include "trackObjects.hpp"
-// #include "interaction.hpp"
 using namespace Objects;
 using namespace Drawer;
 extern std::string BONUSES_IN_STRING;
@@ -67,9 +66,9 @@ money obj46(-0.1, 9, moneyRedDesign, -100);
 money obj47(0.7, 26, moneyRedDesign, -100);
 money obj48(-0.5, 28, moneyRedDesign, -100);
 money obj49(0.5, 33, moneyRedDesign, -100);
-breakWay obj50(0, 10, breakWayDesign);
-breakWay obj51(0, 35, breakWayDesign);
-finish obj52(0, 10, finishDesign);
+breakWay obj50(0, -2, breakWayDesign);
+breakWay obj51(0, -2, breakWayDesign);
+finish obj52(0, 1, finishDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{

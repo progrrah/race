@@ -36,7 +36,7 @@ money bottleinMenu(-0.80, 0.9, moneyDesign, 100, true);
 heart menuHeart(-0.6, 0.9, heartDesign, true);
 // for correct color selecting
 
-std::string textString = "LOLOL";
+std::string textString = "";
 // text textRandom(-1, -1, textDesign, true, "lol");
 
 // colorContainer_type textLifesColorList{{0.9, 0., 1.},
@@ -53,11 +53,13 @@ std::string textString = "LOLOL";
 //     &bottleinMenu, &menuHeart,       &textRandom,     &textMoney,
 //     &textLifes,    &textNumberMoney, &textNumberLifes};
 text textTemplate(0., 0., textDesign, true, &textString);
-text textBonus(-0.42, 0.38, textDesign, true, &BONUSES_IN_STRING);
-text textTime(-0.42, 0.28, textDesign, true, &TIME_IN_STRING);
-text textLifes(-0.42, 0.18, textDesign, true, &LIFES_IN_STRING);
+text textBonus(-0.42, 0.4, textDesign, true, &BONUSES_IN_STRING);
+text textTime(0.315, -0.405, textDesign, true, &TIME_IN_STRING);
+text textLifes(-0.305, 0.4, textDesign, true, &LIFES_IN_STRING);
 
-container_type<track_object *> menuElems{&textTemplate, &textBonus,
-                                         &textTime,     &textLifes,
-                                         &bottleinMenu, &menuHeart};
+block blockMenu(0.65, -0.8, blockDesign, true);
+
+container_type<track_object *> menuElems{
+    &textTemplate, &textBonus, &textTime, &textLifes,
+    &bottleinMenu, &menuHeart, &blockMenu};
 track menuGame{gameMenuDesign, menuElems};

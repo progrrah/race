@@ -23,11 +23,9 @@ std::string line_1 = "----------------------------------------";
 std::string line_2 = "";
 
 std::string BONUSES_IN_STRING;
-std::string LIFSE_IN_STRING;
+std::string LIFES_IN_STRING;
 std::string TIME_IN_STRING;
 int TIME;
-// DONE
-// CREATE A CANDRAW FUNCTION IN HERE
 void Interaction::keyBoard(unsigned char key, int x, int y) {
   switch (key) {
     case 'd':
@@ -54,7 +52,6 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
 };
 void Interaction::redisplayTimer(int) {
   TIME += REDISPLAY_TIME;
-  // TIMER
   // USE STACK FOR DRAWING NEEDED TRACKOBJECTS
   auto fooPrint = [=]() {
     std::cout << "IT'S " << step_number++ << "' step!!!" << std::endl;
@@ -62,7 +59,7 @@ void Interaction::redisplayTimer(int) {
   };
   auto updateInformationCar = []() {
     BONUSES_IN_STRING = std::to_string(mycar.bonus);
-    LIFSE_IN_STRING = std::to_string(mycar.lifes);
+    LIFES_IN_STRING = std::to_string(mycar.lifes);
     TIME_IN_STRING = std::to_string(TIME / 1000);
   };
   changeYY(deltay);
@@ -96,7 +93,7 @@ bool Interaction::canDraw(track_object &object, car &mycar) {
   return flag;
 }
 
-// TODO : TOO MUCH CHECKING
+// TODO : TOO MUCH CHECKING.  FIX IT
 void Interaction::interact(track &mytrack, car &mycar) {
   auto accurancy = 0.01;
   auto wcar = mycar.width;

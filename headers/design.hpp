@@ -97,7 +97,7 @@ car mycar{0, -0.425, dcar, 0, 2, 500};
 внутриигровая менюшка времени, жизней, бонусов и тд
 */
 
-money bottleinMenu(-0.77, 0.9, moneyDesign, true);
+money bottleinMenu(-0.80, 0.9, moneyDesign, 100, true);
 heart menuHeart(-0.6, 0.9, heartDesign, true);
 // for correct color selecting
 
@@ -120,6 +120,9 @@ std::string textString = "LOLOL";
 text textTemplate(0., 0., textDesign, true, &textString);
 text textBonus(-0.42, 0.38, textDesign, true, &BONUSES_IN_STRING);
 text textTime(-0.42, 0.28, textDesign, true, &TIME_IN_STRING);
+text textLifes(-0.42, 0.18, textDesign, true, &LIFES_IN_STRING);
 
-container_type<track_object *> menuElems{&textTemplate, &textBonus, &textTime};
+container_type<track_object *> menuElems{&textTemplate, &textBonus,
+                                         &textTime,     &textLifes,
+                                         &bottleinMenu, &menuHeart};
 track menuGame{gameMenuDesign, menuElems};

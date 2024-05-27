@@ -3,11 +3,8 @@
 struct Point, design;
 */
 #pragma once
-#include "library.hpp"
-// #include "animation.hpp"
 template <typename T>
 using container_type = std::vector<T>;
-extern container_type<container_type<double>> rgblist;
 namespace Drawer {
 enum class typeDrawing { QUADS, TRIANGLES, POLYGONS, CIRCLES, POINTS, LINES };
 struct Point {
@@ -64,20 +61,6 @@ struct design {
   void printPoints() {
     std::set<Point> sortedPoints{points.begin(), points.end()};
     for (auto const &i : sortedPoints) std::cout << i.x << ' ' << i.y << '\n';
-  }
-  void inputPoints() {
-    std::cout << "Ввод точки в систему";
-    Point p;
-    double x{};
-    double y{};
-    std::cin >> x;
-    std::cin >> y;
-    if (x >= -1 && x <= 1) {
-      p.x = x;
-      p.y = y;
-      points.push_back(p);
-      numberPoints++;
-    }
   }
 };
 struct Design {

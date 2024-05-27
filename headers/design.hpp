@@ -4,11 +4,9 @@
 */
 #pragma once
 #include "gameMenu.hpp"
-#include "library.hpp"
 #include "mycar.hpp"
 #include "mytrack.hpp"
 #include "trackObjects.hpp"
-// #include "interaction.hpp"
 using namespace Objects;
 using namespace Drawer;
 extern std::string BONUSES_IN_STRING;
@@ -66,14 +64,19 @@ money obj46(-0.1, 9, moneyRedDesign, -100);
 money obj47(0.7, 26, moneyRedDesign, -100);
 money obj48(-0.5, 28, moneyRedDesign, -100);
 money obj49(0.5, 33, moneyRedDesign, -100);
-tramplin obj50a(0.5, 2, tramplinDesign);
+tramplin obj50a(-0.5, 2, tramplinDesign);
 breakWay obj50(0, 2.2, breakWayDesign);
-tramplin obj51a(-0.7, 34, tramplinDesign);
+tramplin obj51a(0.7, 34, tramplinDesign);
 breakWay obj51(0, 34.2, breakWayDesign);
 finish obj52(0, 48, finishDesign);
-//
 spikes obj53(0.1, 3, spikesDesign);
+spikes obj53a(0.2, 7.2, spikesDesign);
+spikes obj53b(0.3, 7, spikesDesign);
+spikes obj53c(-0.1, 7.3, spikesDesign);
 spikes obj54(-0.13, 33, spikesDesign);
+spikes obj54a(-0.7, 33, spikesDesign);
+spikes obj54b(0.7, 33, spikesDesign);
+spikes obj54c(0.65, 32.7, spikesDesign);
 spikes obj55(0.12, 40, spikesDesign);
 money obj56(0, 30, moneyRedDesign, -100);
 spikes obj57(0, 12, spikesDesign);
@@ -94,19 +97,27 @@ gear obj71(0.13, 8, gearDesign);
 gear obj72(-0.33, 40, gearDesign);
 gear obj73(0.22, 47, gearDesign);
 gear obj74(-0.38, 14, gearDesign);
+spikes obj75(-0.23, 37, spikesDesign);
+spikes obj76(0.23, 39, spikesDesign);
+spikes obj77(-0.35, 43, spikesDesign);
+spikes obj78(0.23, 42, spikesDesign);
+spikes obj79(0, 40, spikesDesign);
+gear obj80(-0.33, 41, gearDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 // container_type<track_object *> mytrackObjects{&obj67, &obj52};
 container_type<track_object *> mytrackObjects{
-    &obj1,  &obj2,  &obj3,  &obj4,  &obj5,   &obj6,  &obj7,   &obj8,  &obj9,
-    &obj10, &obj11, &obj12, &obj13, &obj14,  &obj15, &obj16,  &obj17, &obj18,
-    &obj19, &obj20, &obj21, &obj22, &obj23,  &obj24, &obj25,  &obj26, &obj27,
-    &obj28, &obj29, &obj30, &obj31, &obj32,  &obj33, &obj34,  &obj35, &obj36,
-    &obj37, &obj38, &obj39, &obj40, &obj41,  &obj42, &obj43,  &obj44, &obj45,
-    &obj46, &obj47, &obj48, &obj49, &obj50a, &obj50, &obj51a, &obj51, &obj52,
-    &obj53, &obj54, &obj55, &obj56, &obj57,  &obj58, &obj59,  &obj60, &obj61,
-    &obj62, &obj63, &obj64, &obj65, &obj66,  &obj67, &obj68,  &obj69, &obj70,
-    &obj71, &obj72, &obj73, &obj74};
+    &obj1,  &obj2,   &obj3,   &obj4,   &obj5,   &obj6,   &obj7,   &obj8,
+    &obj9,  &obj10,  &obj11,  &obj12,  &obj13,  &obj14,  &obj15,  &obj16,
+    &obj17, &obj18,  &obj19,  &obj20,  &obj21,  &obj22,  &obj23,  &obj24,
+    &obj25, &obj26,  &obj27,  &obj28,  &obj29,  &obj30,  &obj31,  &obj32,
+    &obj33, &obj34,  &obj35,  &obj36,  &obj37,  &obj38,  &obj39,  &obj40,
+    &obj41, &obj42,  &obj43,  &obj44,  &obj45,  &obj46,  &obj47,  &obj48,
+    &obj49, &obj50a, &obj50,  &obj51a, &obj51,  &obj52,  &obj53,  &obj54,
+    &obj55, &obj56,  &obj57,  &obj58,  &obj59,  &obj60,  &obj61,  &obj62,
+    &obj63, &obj64,  &obj65,  &obj66,  &obj67,  &obj68,  &obj69,  &obj70,
+    &obj71, &obj72,  &obj73,  &obj74,  &obj75,  &obj76,  &obj77,  &obj78,
+    &obj79, &obj80,  &obj53a, &obj53b, &obj53c, &obj54a, &obj54b, &obj54c};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины

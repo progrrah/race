@@ -1,4 +1,6 @@
-/**/
+/*
+дизайн машины
+*/
 #pragma once
 #include "library.hpp"
 using namespace Drawer;

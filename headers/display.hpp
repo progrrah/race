@@ -1,6 +1,4 @@
 #pragma once
-#include <GL/glut.h>
-#include <vector>
 #include "library.hpp"
 extern int TIME;
 extern int SELECT_KEY_DISPLAY;
@@ -13,8 +11,6 @@ struct Game {
 
   int time;
   void startGame();
-  void restartGame();
-  void killGame();
   void finishGame();
   Game(){};
   Game(track* exTrack, track* exactiveMenu, car* exCar, int exTime)

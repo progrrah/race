@@ -11,16 +11,13 @@ using container_type = std::vector<T>;
 using colorContainer_type = container_type<container_type<double>>;
 const float POINT_RADIUS = 6.0f;
 const double deltaScaled = 1.07;
-extern char **fileName;
 extern double YY;
 extern double carPhi;
 extern double deltaPhi;
 extern double deltay;
 extern double deltax;
-extern double deltaSpeed;
 extern double scaleX;
 extern double scaleY;
-// extern const int REDISPLAY_TIME;
 extern bool EXIT_KEY_IN_INTERACTION;
 extern bool EXIT_KEY_IS_FINISHED;
 namespace Objects {
@@ -159,7 +156,6 @@ struct money : track_object {
 };
 struct spikes : track_object {
   void doing(car &mycar, track *mytrack = nullptr) {
-    mycar.speed -= deltaSpeed;
     mycar.lifes--;
     if (mycar.lifes == 0) mycar.dead();
   }

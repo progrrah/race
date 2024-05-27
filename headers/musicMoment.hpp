@@ -1,7 +1,6 @@
 /*
 файл, который должен был отвечать за музыку, но увы
 */
-// #define MINIAUDIO_IMPLEMENTATION
 #pragma once
 #include <stdio.h>
 

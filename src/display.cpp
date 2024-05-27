@@ -19,8 +19,6 @@ void Game::startGame() {
   EXIT_KEY_IN_INTERACTION = false;
   RANDOM_COLOR_OPTION = false;
 }
-void Game::restartGame() {}
-void Game::killGame() {}
 void Game::finishGame() {
   menuGame = menuEnd;
   EXIT_KEY_IN_INTERACTION = true;

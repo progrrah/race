@@ -4,16 +4,10 @@ extern Objects::car mycar;
 extern Objects::track mytrack;
 extern Objects::bottle obj1;
 
-extern char **fileName;
 extern const int REDISPLAY_TIME;
 extern const int SHIFTING_TIME;
-
-Objects::track_object *temp = new Objects::text();
 extern Game mygame;
 double YY = mycar.initY;
-double carSpeedx = 0.01;
-double carSpeedy = 0.1;
-double carAdcceleration = 0.05;
 double trackPhi = 0;
 double carPhi = 0;
 double deltaPhi = 10;
@@ -82,9 +76,6 @@ void Interaction::redisplayTimer(int value) {
 }
 void Interaction::moveСontinuously(int value) {
   deltay += 0.01;
-  /*
-  в течение времени SHIFTING_TIME за каждый REDISPLAY_TIME будет меняться
-  */
   glutTimerFunc(SHIFTING_TIME, redisplayTimer, 1);
 }
 void Interaction::changeXX(double deltax) {
@@ -106,7 +97,7 @@ bool Interaction::canDraw(track_object &object, car &mycar) {
   return flag;
 }
 
-// TODO : TOO MUCH CHECKING.  FIX IT
+// TODO : TOO MUCH CHECKING. FIX IT
 void Interaction::interact(track &mytrack, car &mycar) {
   auto accurancy = 0.01;
   auto wcar = mycar.width;

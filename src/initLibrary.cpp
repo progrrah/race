@@ -18,10 +18,8 @@ extern const int WIDTH;   // window width
 extern const int HEIGHT;  // window height
 extern const float POINT_RADIUS;
 extern bool EXIT_KEY_IN_INTERACTION;
-extern bool SELECT_KEY_WINDOW;
 extern int SELECT_KEY_DISPLAY;
 
-char **fileName;
 extern car mycar;
 extern track mytrack;
 extern track initTrack;

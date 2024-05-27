@@ -5,13 +5,8 @@
 #pragma once
 #include <GL/freeglut.h>
 #include <GL/glut.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 #include <algorithm>
-#include <cmath>
-#include <ctime>
 #include <initializer_list>
 #include <iostream>
 #include <set>

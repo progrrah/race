@@ -5,9 +5,6 @@ using namespace Drawer;
 using namespace Objects;
 container_type<container_type<double>> trackMainColor{
     {0.7, 0.3, 0.6}, {0.7, 0.3, 0.6}, {0.6, 0.8, 0.9}, {0.6, 0.9, 0.9}};
-// old blue pink maganta color
-// container_type<container_type<double>> trackMainColor{
-//     {0.1, 0.2, 0.7}, {0.3, 0.2, 0.7}, {0.1, 0.4, 0.7}, {0.9, 0.2, 0.7}};
 container_type<container_type<double>> trackLineColor{
     {0.2, 0.2, 0.1}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.3}, {0.2, 0.7, 0.7}};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

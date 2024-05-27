@@ -1,6 +1,7 @@
 #pragma once
 
 #include "drawer.hpp"
+#include <typeinfo>
 
 template <typename T>
 using container_type = std::vector<T>;
@@ -33,6 +34,14 @@ struct track {
       : number_elems(exelems.size()),
         trackDesign(extrackDesign),
         elems(exelems) {}
+  void removeObject(track_object *concretObject) {
+    auto pointer =
+        std::find(this->elems.begin(), this->elems.end(), concretObject);
+    if (pointer != this->elems.end()++) {
+      this->elems.erase(pointer);
+    } else
+      std::cout << "Object dont exist";
+  };
 
   void addElems(container_type<track_object *> exelems) {
     for (auto const &i : exelems) {
@@ -76,6 +85,14 @@ struct car {
     this->height /= deltaxScaledy;
     carPhi += deltaPhi;
   };
+  void jump(int Phi = 30, double deltaxx = deltaScaled,
+            double deltayy = deltaScaled) {
+    scaleX /= deltaxx;
+    scaleY /= deltayy;
+    this->width /= deltaxx;
+    this->height /= deltayy;
+    carPhi += Phi;
+  }
   void setSpeed(double newspeed) { speed = newspeed; }
   void dead() {
     lifes = 0;
@@ -103,7 +120,7 @@ struct track_object {
   double x, y;
   bool IS_STATIC;
   Design objectDesign;
-  virtual void doing(car &mycar) = 0;
+  virtual void doing(car &mycar, track *mytrack = nullptr) = 0;
   virtual void drawObject() {
     auto number = objectDesign.designs.size();
     for (size_t i = 0; i < number; i++) {
@@ -119,7 +136,7 @@ struct track_object {
 
 namespace Objects {
 struct heart : track_object {
-  void doing(car &mycar) {
+  void doing(car &mycar, track *mytrack = nullptr) {
     if (mycar.lifes < 2) {
       mycar.lifes++;
     }
@@ -129,7 +146,7 @@ struct heart : track_object {
 };
 struct money : track_object {
   int bonus;
-  void doing(car &mycar) {
+  void doing(car &mycar, track *mytrack = nullptr) {
     mycar.bonus += bonus;
     if (mycar.bonus >= 1000) {
       mycar.lifes++;
@@ -143,7 +160,7 @@ struct money : track_object {
   }
 };
 struct spikes : track_object {
-  void doing(car &mycar) {
+  void doing(car &mycar, track *mytrack = nullptr) {
     mycar.speed -= deltaSpeed;
     mycar.lifes--;
     if (mycar.lifes == 0) mycar.dead();
@@ -152,7 +169,7 @@ struct spikes : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct bottle : track_object {
-  void doing(car &mycar) override {
+  void doing(car &mycar, track *mytrack = nullptr) override {
     std::cout << "CONCRET DOING" << std::endl;
     deltax = -deltax;
     scaleX *= deltaScaled;
@@ -164,20 +181,42 @@ struct bottle : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct finish : track_object {
-  void doing(car &mycar) {}
+  void doing(car &mycar, track *mytrack = nullptr) {}
   finish(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };
 struct breakWay : track_object {
-  void doing(car &mycar) {
-    mycar.dead();
+  bool IS_UNACTIVE_WITH_TRAMPLIN;
+  void doing(car &mycar, track *mytrack = nullptr) {
+    if (!IS_UNACTIVE_WITH_TRAMPLIN) mycar.dead();
     std::cout << "concret doing" << std::endl;
+    mycar.jump(50, 1 / deltaScaled, 1 / deltaScaled);
   }
+  breakWay() {}
   breakWay(double exx, double exy, Design exDesign, bool key = false)
-      : track_object(exx, exy, exDesign, key) {}
+      : track_object(exx, exy, exDesign, key) {
+    IS_UNACTIVE_WITH_TRAMPLIN = false;
+  }
 };
 struct tramplin : track_object {
-  void doing(car &mycar) {}
+  std::string what = {"df"};
+  void doing(car &mycar, track *mytrack = nullptr) {
+    auto pointerTramplin =
+        std::find(mytrack->elems.begin(), mytrack->elems.end(), this);
+    std::cout << (*pointerTramplin)->x << std::endl;
+
+    auto tramplinPointer = dynamic_cast<tramplin *>(*pointerTramplin);
+    std::cout << (tramplinPointer)->what << std::endl;
+
+    auto nextPointer = pointerTramplin++;
+    // auto breakwayIndicator = new breakWay();
+    auto breakWayPointer = dynamic_cast<breakWay *>(*pointerTramplin++);
+    std::cout << (*breakWayPointer).IS_UNACTIVE_WITH_TRAMPLIN << std::endl;
+    // if (breakwayIndicator == breakWayPointer) {
+    breakWayPointer->IS_UNACTIVE_WITH_TRAMPLIN = true;
+    // }
+    mycar.jump(-50);
+  }
   tramplin(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };
@@ -201,7 +240,7 @@ struct text : track_object {
     message = msg;
     COLOR_RICHNESS = true;
   }
-  void doing(car &mycar) {}
+  void doing(car &mycar, track *mytrack = nullptr) {}
   void drawObject() override {
     if (!message) {
       std::cerr << "MESSAGE DONT EXIST";
@@ -222,7 +261,7 @@ struct text : track_object {
   }
 };
 struct block : track_object {
-  void doing(car &mycar) {}
+  void doing(car &mycar, track *mytrack = nullptr) {}
   block(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };

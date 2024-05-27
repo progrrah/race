@@ -76,7 +76,7 @@ void initOpengl() {
   // how does it work
   selectDisplay();
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
-  // glutTimerFunc(SHIFTING_TIME, moveALL, 0);
+  glutTimerFunc(SHIFTING_TIME, moveСontinuously, 0);
 }
 void selectDisplay() {
   switch (SELECT_KEY_DISPLAY) {

@@ -32,7 +32,6 @@ spikes obj12(0.4, 7, spikesDesign);
 spikes obj13(0.3, 13, spikesDesign);
 spikes obj14(0.4, 23, spikesDesign);
 spikes obj15(0.4, 32, spikesDesign);
-// heart obj7(0.5, 0.5, heartDesign);
 spikes obj16(-0.4, 7, spikesDesign);
 spikes obj17(-0.3, 17, spikesDesign);
 spikes obj18(-0.4, 29, spikesDesign);
@@ -67,19 +66,20 @@ money obj46(-0.1, 9, moneyRedDesign, -100);
 money obj47(0.7, 26, moneyRedDesign, -100);
 money obj48(-0.5, 28, moneyRedDesign, -100);
 money obj49(0.5, 33, moneyRedDesign, -100);
-breakWay obj50(0, 12, breakWayDesign);
-breakWay obj51(0, 35, breakWayDesign);
-finish obj52(0, 10, finishDesign);
-tramplin obj53(0,11.5,tramplinDesign);
+tramplin obj50a(0, 2, tramplinDesign);
+breakWay obj50(0, 2.2, breakWayDesign);
+tramplin obj51a(0, 34, tramplinDesign);
+breakWay obj51(0, 34.2, breakWayDesign);
+finish obj52(0, 48, finishDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{
-    &obj1,  &obj2,  &obj3,  &obj4,  &obj5,  &obj6,  &obj7,  &obj8,  &obj9,
-    &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16, &obj17, &obj18,
-    &obj19, &obj20, &obj21, &obj22, &obj23, &obj24, &obj25, &obj26, &obj27,
-    &obj28, &obj29, &obj30, &obj31, &obj32, &obj33, &obj34, &obj35, &obj36,
-    &obj37, &obj38, &obj39, &obj40, &obj41, &obj42, &obj43, &obj44, &obj45,
-    &obj46, &obj47, &obj48, &obj49, &obj50, &obj51, &obj52, &obj53};
+    &obj1,  &obj2,  &obj3,  &obj4,  &obj5,   &obj6,  &obj7,   &obj8,  &obj9,
+    &obj10, &obj11, &obj12, &obj13, &obj14,  &obj15, &obj16,  &obj17, &obj18,
+    &obj19, &obj20, &obj21, &obj22, &obj23,  &obj24, &obj25,  &obj26, &obj27,
+    &obj28, &obj29, &obj30, &obj31, &obj32,  &obj33, &obj34,  &obj35, &obj36,
+    &obj37, &obj38, &obj39, &obj40, &obj41,  &obj42, &obj43,  &obj44, &obj45,
+    &obj46, &obj47, &obj48, &obj49, &obj50a, &obj50, &obj51a, &obj51, &obj52};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины

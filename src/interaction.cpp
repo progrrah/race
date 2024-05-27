@@ -5,13 +5,18 @@ extern Objects::bottle obj1;
 
 extern char **fileName;
 extern const int REDISPLAY_TIME;
+extern const int SHIFTING_TIME;
 
+Objects::track_object *temp = new Objects::text();
 double YY = mycar.initY;
 double XX = 0;
+double carSpeedx = 0.01;
+double carSpeedy = 0.1;
+double carAcceleration = 0.05;
 double trackPhi = 0;
 double carPhi = 0;
-double deltaPhi = 100;
-double deltay = 0.2;
+double deltaPhi = 10;
+double deltay = 0.02;
 double deltax = 0.1;
 double deltaSpeed = 0.1;
 double scaleX = 1;
@@ -69,19 +74,27 @@ void Interaction::redisplayTimer(int value) {
     interact(mytrack, mycar);
   else
     mycar.animate();
-  // TODO : INFORMATION OUTPUT PROCESSING
-  // updateInformationAboutCar
-  // updateInformationAboutTrack
-  // updateInformationAboutTime
-  // playMusic(2, fileName);
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
 }
+void Interaction::moveСontinuously(int value) {
+  /*
+  в течение времени SHIFTING_TIME за каждый REDISPLAY_TIME будет меняться 
+  */
+  glutTimerFunc(SHIFTING_TIME, redisplayTimer, 1);
+}
 void Interaction::changeXX(double deltax) {
-  // auto mycarWIDTH = mycar.width / 2 + mycar.carDesign.
-  if (mycar.x + mycar.width / 2 <= 0.85 - deltax && deltax >= 0)
-    mycar.x += deltax;
-  else if (mycar.x - mycar.width / 2 >= -0.85 - deltax && deltax < 0)
-    mycar.x += deltax;
+  // while (abs(carSpeedx) == 0.0)
+  // if()
+  {
+    if (mycar.x + mycar.width / 2 <= 0.85 - deltax && deltax >= 0) {
+      // mycar.x += carSpeedx * REDISPLAY_TIME;
+      // carSpeedx -= carAcceleration;
+      mycar.x += deltax;
+      // glutPostRedisplay();
+    } else if (mycar.x - mycar.width / 2 >= -0.85 - deltax && deltax < 0) {
+      mycar.x += deltax;
+    }
+  }
 }
 void Interaction::changeYY(double deltay) { mycar.y += deltay; }
 // DONE
@@ -124,18 +137,17 @@ void Interaction::interact(track &mytrack, car &mycar) {
       std::cout << "\twobj" << std::endl;
       std::cout << line_1 << std::endl;
     };
-    auto check = [&]() {
+    auto checkandDo = [=, &trackOb, &mytrack, &mycar]() {
       if (xcar + wcar / 2 >= xobj - wobj / 2 &&
           xcar - wcar / 2 <= xobj + wobj / 2)
         if (ycar + hcar / 2 >= yobj - hobj / 2 &&
             ycar - hcar / 2 <= yobj + hobj / 2) {
-          trackOb->doing(mycar);
-          mytrack.elems.erase(
-              std::find(mytrack.elems.begin(), mytrack.elems.end(), trackOb));
+          trackOb->doing(mycar, &mytrack);
+          mytrack.removeObject(trackOb);
         }
     };
-    fooPrint();
-    check();
+    // fooPrint();
+    checkandDo();
   };
 }
 void Interaction::drawALL() {
@@ -147,7 +159,10 @@ void Interaction::drawALL() {
 
 void Interaction::doTransformTrack() { glRotated(trackPhi, 0, 0, 1); }
 void Interaction::doTransformCar() {
-  glRotated(carPhi, mycar.x, mycar.y, 1);
+  // if ()
+  glRotated(carPhi, 1, 0, 0);
+  // glRotated(carPhi, mycar.x, mycar.y, 1);
+  // glRotated(carPhi, mycar.x, mycar.y, 1);
   glTranslated(mycar.x, 0, 0);
   glTranslated(0, YY, 0);
   glScaled(scaleX, scaleY, 0);

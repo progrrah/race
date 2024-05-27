@@ -24,7 +24,7 @@ void anymalKeyboard(
 void redisplayTimer(int value = 1);
 void changeYY(double deltay = deltay);
 void changeXX(double deltax = deltax);
-void moveALL(int = 2);
+void moveСontinuously(int value = 2);
 void doTransformTrack();
 void doTransformCar();
 void doTransformTrackObjects(track_object &object);

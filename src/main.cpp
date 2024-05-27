@@ -2,7 +2,7 @@
 основной файл, где инициализируется программа
 */
 #include <GL/glut.h>
-// #include "initLibrary.hpp"
+#include "initLibrary.hpp"
 void initOpengl();
 int main(int argc, char **argv) {
   // char *file = "Main.wav";

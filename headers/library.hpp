@@ -23,5 +23,5 @@
 // #include "musicMoment.hpp"
 const int WIDTH = 800;    // window width
 const int HEIGHT = 1000;  // window height
-const int REDISPLAY_TIME = 100;
+const int REDISPLAY_TIME = 20;
 const int SHIFTING_TIME = 100;

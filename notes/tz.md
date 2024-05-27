@@ -74,4 +74,8 @@ let's my save track_object and bottle for example also not a one design but **co
     2. по умному отображать иконки сердца и бонусов и времени
     3. 
 4. добавить ускорение
-5. 
+5.   // TODO : INFORMATION OUTPUT PROCESSING
+  // updateInformationAboutCar
+  // updateInformationAboutTrack
+  // updateInformationAboutTime
+  // playMusic(2, fileName);

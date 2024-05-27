@@ -78,13 +78,6 @@ struct design {
       points.push_back(p);
       numberPoints++;
     }
-  };
-  void inputDesigns(std::size_t count) {
-    //
-    std::cout << "Вводим дизайн в систему" << std::endl;
-    std::cout << "Введите колво точек" << std::endl;
-    for (std::size_t i{0}; i < count; i++) {
-    }
   }
 };
 struct Design {
@@ -93,7 +86,6 @@ struct Design {
   double height;
   Design() : width(0), height(0) {}
   Design(container_type<design *> exdesins) : designs(exdesins) {
-    // if you dont init then 3 10^328 for example we have
     double tempW{0};
     double tempH{0};
     for (size_t i = 0; i < designs.size(); i++) {

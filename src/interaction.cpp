@@ -1,4 +1,5 @@
 #include "interaction.hpp"
+#include "display.hpp"
 extern Objects::car mycar;
 extern Objects::track mytrack;
 extern Objects::bottle obj1;
@@ -8,6 +9,7 @@ extern const int REDISPLAY_TIME;
 extern const int SHIFTING_TIME;
 
 Objects::track_object *temp = new Objects::text();
+extern Game mygame;
 double YY = mycar.initY;
 double carSpeedx = 0.01;
 double carSpeedy = 0.1;
@@ -15,11 +17,11 @@ double carAcceleration = 0.05;
 double trackPhi = 0;
 double carPhi = 0;
 double deltaPhi = 10;
-double deltay = 0.02;
+double deltay = 0.025;
 double deltax = 0.1;
 double deltaSpeed = 0.1;
-double scaleX = 1;
-double scaleY = 1;
+double scaleX = 0.9;
+double scaleY = 0.9;
 bool EXIT_KEY_IN_INTERACTION = false;
 int SELECT_KEY_DISPLAY = 1;
 int step_number = 1;
@@ -30,7 +32,7 @@ std::string BONUSES_IN_STRING;
 std::string LIFES_IN_STRING;
 std::string TIME_IN_STRING;
 int TIME;
-void Interaction::keyBoard(unsigned char key, int x, int y) {
+void Interaction::keyBoardGame(unsigned char key, int x, int y) {
   switch (key) {
     case 'd':
       Interaction::changeXX();
@@ -50,11 +52,12 @@ void Interaction::keyBoard(unsigned char key, int x, int y) {
       exit(0);
     case 'z':
       exit(0);
+    case 'r':
+      mygame.startGame();
     default:
       break;
   }
 };
-// USE STACK FOR DRAWING NEEDED TRACKOBJECTS
 void Interaction::redisplayTimer(int value) {
   TIME += REDISPLAY_TIME;
   auto fooPrint = [=]() {
@@ -82,21 +85,13 @@ void Interaction::moveСontinuously(int value) {
   glutTimerFunc(SHIFTING_TIME, redisplayTimer, 1);
 }
 void Interaction::changeXX(double deltax) {
-  // while (abs(carSpeedx) == 0.0)
-  // if()
-  {
-    if (mycar.x + mycar.width / 2 <= 0.85 - deltax && deltax >= 0) {
-      // mycar.x += carSpeedx * REDISPLAY_TIME;
-      // carSpeedx -= carAcceleration;
-      mycar.x += deltax;
-      // glutPostRedisplay();
-    } else if (mycar.x - mycar.width / 2 >= -0.85 - deltax && deltax < 0) {
-      mycar.x += deltax;
-    }
+  if (mycar.x + mycar.width / 2 <= 0.85 - deltax && deltax >= 0) {
+    mycar.x += deltax;
+  } else if (mycar.x - mycar.width / 2 >= -0.85 - deltax && deltax < 0) {
+    mycar.x += deltax;
   }
 }
 void Interaction::changeYY(double deltay) { mycar.y += deltay; }
-// DONE
 bool Interaction::canDraw(track_object &object, car &mycar) {
   bool flag = 0;
   auto ycar = mycar.y;
@@ -115,7 +110,6 @@ void Interaction::interact(track &mytrack, car &mycar) {
   auto hcar = mycar.height;
   auto xcar = mycar.x;
   auto ycar = (mycar.y + YY - accurancy * hcar);
-  // auto LEVEL_LENGTH = mytrack.trackDesign.at(0).height - hcar / 2;
   for (auto &trackOb : mytrack.elems) {
     auto wobj = trackOb->objectDesign.width;
     auto hobj = trackOb->objectDesign.height;
@@ -145,7 +139,6 @@ void Interaction::interact(track &mytrack, car &mycar) {
           mytrack.removeObject(trackOb);
         }
     };
-    // fooPrint();
     checkandDo();
   };
 }
@@ -158,10 +151,7 @@ void Interaction::drawALL() {
 
 void Interaction::doTransformTrack() { glRotated(trackPhi, 0, 0, 1); }
 void Interaction::doTransformCar() {
-  // if ()
   glRotated(carPhi, 1, 0, 0);
-  // glRotated(carPhi, mycar.x, mycar.y, 1);
-  // glRotated(carPhi, mycar.x, mycar.y, 1);
   glTranslated(mycar.x, 0, 0);
   glTranslated(0, YY, 0);
   glScaled(scaleX, scaleY, 0);

@@ -66,11 +66,26 @@ money obj46(-0.1, 9, moneyRedDesign, -100);
 money obj47(0.7, 26, moneyRedDesign, -100);
 money obj48(-0.5, 28, moneyRedDesign, -100);
 money obj49(0.5, 33, moneyRedDesign, -100);
-tramplin obj50a(0, 2, tramplinDesign);
+tramplin obj50a(0.5, 2, tramplinDesign);
 breakWay obj50(0, 2.2, breakWayDesign);
-tramplin obj51a(0, 34, tramplinDesign);
+tramplin obj51a(-0.7, 34, tramplinDesign);
 breakWay obj51(0, 34.2, breakWayDesign);
 finish obj52(0, 48, finishDesign);
+//
+spikes obj53(0.1, 3, spikesDesign);
+spikes obj54(-0.13, 33, spikesDesign);
+spikes obj55(0.12, 40, spikesDesign);
+money obj56(0, 30, moneyRedDesign, -100);
+spikes obj57(0, 12, spikesDesign);
+bottle obj58(-0.4, 40, bottleDesign);
+money obj59(-0.2, 35, moneyRedDesign, -100);
+spikes obj60(0.3, 21, spikesDesign);
+spikes obj61(0, 17, spikesDesign);
+spikes obj62(0.1, 39, spikesDesign);
+spikes obj63(-0.1, 30, spikesDesign);
+spikes obj64(0.1, 36, spikesDesign);
+spikes obj65(0.0, 25, spikesDesign);
+spikes obj66(-0.1, 20, spikesDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{
@@ -79,17 +94,21 @@ container_type<track_object *> mytrackObjects{
     &obj19, &obj20, &obj21, &obj22, &obj23,  &obj24, &obj25,  &obj26, &obj27,
     &obj28, &obj29, &obj30, &obj31, &obj32,  &obj33, &obj34,  &obj35, &obj36,
     &obj37, &obj38, &obj39, &obj40, &obj41,  &obj42, &obj43,  &obj44, &obj45,
-    &obj46, &obj47, &obj48, &obj49, &obj50a, &obj50, &obj51a, &obj51, &obj52};
+    &obj46, &obj47, &obj48, &obj49, &obj50a, &obj50, &obj51a, &obj51, &obj52,
+    &obj53, &obj54, &obj55, &obj56, &obj57,  &obj58, &obj59,  &obj60, &obj61,
+    &obj62, &obj63, &obj64, &obj65, &obj66};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины
 */
 container_type<track_object *> oneObject{&obj10};
 // track mytrack{trackDesign, oneObject};
-track mytrack{trackDesign, mytrackObjects};
+track mytrack;
+track initTrack{trackDesign, mytrackObjects};
 
 /*
 создаем машину, определяя начальные координаты, дизайн, скорость, жизни, бонусы
 в начале игры
 */
-car mycar{0, -0.425, dcar, 0, 2, 500};
+car mycar;
+car initcar{0, -0.425, dcar, 0, 2, 500};

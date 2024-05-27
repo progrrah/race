@@ -21,9 +21,6 @@ extern double deltaSpeed;
 extern double scaleX;
 extern double scaleY;
 extern bool EXIT_KEY_IN_INTERACTION;
-// void *fonts[] = {GLUT_BITMAP_9_BY_15, GLUT_BITMAP_TIMES_ROMAN_10,
-//                  GLUT_BITMAP_TIMES_ROMAN_24};
-
 namespace Objects {
 using namespace Drawer;
 struct track_object;
@@ -172,7 +169,6 @@ struct spikes : track_object {
 };
 struct bottle : track_object {
   void doing(car &mycar, track *mytrack = nullptr) override {
-    std::cout << "CONCRET DOING" << std::endl;
     deltax = -deltax;
     scaleX *= deltaScaled;
     scaleY *= deltaScaled;
@@ -182,8 +178,23 @@ struct bottle : track_object {
   bottle(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };
+struct gear : track_object {
+  int Phi;
+  double Scaledx;
+  double Scaledy;
+  double SPEEDBOOSTED;
+  void doing(car &mycar, track *mytrack = nullptr) override {}
+  gear(double exx, double exy, Design exDesign, double exSpeeding = 1.1,
+       bool key = false)
+      : track_object(exx, exy, exDesign, key) {
+    SPEEDBOOSTED = exSpeeding;
+    Phi = 20;
+  }
+};
 struct finish : track_object {
-  void doing(car &mycar, track *mytrack = nullptr) {}
+  void doing(car &mycar, track *mytrack = nullptr) {
+    EXIT_KEY_IN_INTERACTION = true;
+  }
   finish(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}
 };
@@ -191,7 +202,6 @@ struct breakWay : track_object {
   bool IS_UNACTIVE_WITH_TRAMPLIN;
   void doing(car &mycar, track *mytrack = nullptr) {
     if (!IS_UNACTIVE_WITH_TRAMPLIN) mycar.dead();
-    std::cout << "concret doing" << std::endl;
     mycar.jump(50, 1 / deltaScaled, 1 / deltaScaled);
   }
   breakWay() {}
@@ -205,15 +215,10 @@ struct tramplin : track_object {
   void doing(car &mycar, track *mytrack = nullptr) {
     auto pointerTramplin =
         std::find(mytrack->elems.begin(), mytrack->elems.end(), this);
-    std::cout << (*pointerTramplin)->x << std::endl;
-
     auto tramplinPointer = dynamic_cast<tramplin *>(*pointerTramplin);
-    std::cout << (tramplinPointer)->what << std::endl;
 
     auto nextPointer = pointerTramplin++;
-    // auto breakwayIndicator = new breakWay();
     auto breakWayPointer = dynamic_cast<breakWay *>(*pointerTramplin++);
-    std::cout << (*breakWayPointer).IS_UNACTIVE_WITH_TRAMPLIN << std::endl;
     // if (breakwayIndicator == breakWayPointer) {
     breakWayPointer->IS_UNACTIVE_WITH_TRAMPLIN = true;
     // }
@@ -227,8 +232,6 @@ struct text : track_object {
   bool COLOR_RICHNESS;
   colorContainer_type color;
   void *mainFont = GLUT_BITMAP_HELVETICA_18;
-  // void *mainFont = GLUT_BITMAP_HELVETICA_12;
-  // void *mainFont = GLUT_BITMAP_TIMES_ROMAN_24;
   text(){};
   text(double exx, double exy, Design exDesign, bool key = false,
        std::string *msg = nullptr)

@@ -4,17 +4,16 @@
 
 #include <vector>
 
-#include "initLibrary.hpp"
 #include "design.hpp"
 #include "interaction.hpp"
 #include "library.hpp"
+#include "display.hpp"
 template <typename T>
 using container_type = std::vector<T>;
 using namespace Interaction;
 using namespace Objects;
 using namespace Drawer;
 extern const int SHIFTING_TIME;
-// extern const int REDISPLAY_TIME;
 extern const int WIDTH;   // window width
 extern const int HEIGHT;  // window height
 extern const float POINT_RADIUS;
@@ -25,7 +24,9 @@ extern int SELECT_KEY_DISPLAY;
 char **fileName;
 extern car mycar;
 extern track mytrack;
+extern track initTrack;
 extern track menuGame;
+Game mygame(&initTrack, &initcar, 0);
 void displayGame() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   doTransformTrack();
@@ -72,8 +73,6 @@ void initOpengl() {
   glutInitWindowPosition(500, 500);
   glutCreateWindow("race");
   glClearColor(1, 1, 1, 1);
-  glutKeyboardFunc(keyBoard);
-  // how does it work
   selectDisplay();
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
   glutTimerFunc(SHIFTING_TIME, moveСontinuously, 0);
@@ -84,7 +83,9 @@ void selectDisplay() {
       glutDisplayFunc(displayStartMenu);
       break;
     case 1:
+      mygame.startGame();
       glutDisplayFunc(displayGame);
+      glutKeyboardFunc(keyBoardGame);
       break;
     case 2:
       glutDisplayFunc(displayEndMenu);

@@ -1,6 +1,4 @@
-/*
-здесь описан дизайн машины
-*/
+/**/
 #pragma once
 #include "library.hpp"
 using namespace Drawer;
@@ -18,7 +16,7 @@ Point carMainPoint4 = {0.1, -0.15};
 container_type<Point> mainPoints{carMainPoint1, carMainPoint2, carMainPoint3,
                                  carMainPoint4};
 container_type<container_type<double>> carColor{
-    {0.4, 0.2, 0.35}, {0.5, 0.2, 0.35}, {0.9, 0.3, 0.1}, {0.9, 0.1, 0.4}};
+    {1, 0.5, 0.2}, {1, 0.7, 0.5}, {1, 0.5, 0}, {1, 0.6, 0.3}};
 // container_type<container_type<double>> carColor{
 //     {0.5, 0.2, 0.1}, {0.9, 0.2, 0.1}, {0.9, 0.1, 0.35}, {0.5, 0.1, 0.35}};
 
@@ -55,7 +53,7 @@ container_type<Point> wheelPoints = {
     carWheelPoint9,  carWheelPoint10, carWheelPoint11, carWheelPoint12,
     carWheelPoint13, carWheelPoint14, carWheelPoint15, carWheelPoint16};
 container_type<container_type<double>> wheelColor = {
-    {0.4, 0.0, 0.1}, {0.0, 0.0, 0.1}, {0.0, 0.0, 0.1}, {0.0, 0.0, 0.8},
+    {0.0, 0.0, 0.1}, {0.0, 0.0, 0.1}, {0.0, 0.0, 0.1}, {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};

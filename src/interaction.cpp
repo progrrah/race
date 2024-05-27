@@ -9,7 +9,6 @@ extern const int SHIFTING_TIME;
 
 Objects::track_object *temp = new Objects::text();
 double YY = mycar.initY;
-double XX = 0;
 double carSpeedx = 0.01;
 double carSpeedy = 0.1;
 double carAcceleration = 0.05;
@@ -78,7 +77,7 @@ void Interaction::redisplayTimer(int value) {
 }
 void Interaction::moveСontinuously(int value) {
   /*
-  в течение времени SHIFTING_TIME за каждый REDISPLAY_TIME будет меняться 
+  в течение времени SHIFTING_TIME за каждый REDISPLAY_TIME будет меняться
   */
   glutTimerFunc(SHIFTING_TIME, redisplayTimer, 1);
 }

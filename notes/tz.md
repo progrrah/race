@@ -79,3 +79,4 @@ let's my save track_object and bottle for example also not a one design but **co
   // updateInformationAboutTrack
   // updateInformationAboutTime
   // playMusic(2, fileName);
+6. рестарт

@@ -1,4 +1,4 @@
-/**/
+/*здесь дизайн трека*/
 #pragma once
 #include "library.hpp"
 using namespace Drawer;

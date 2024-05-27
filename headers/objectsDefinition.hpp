@@ -1,3 +1,6 @@
+/*
+здесь определены track, car, track_object и производные от последнего
+*/
 #pragma once
 
 #include "drawer.hpp"
@@ -10,7 +13,6 @@ const float POINT_RADIUS = 6.0f;
 const double deltaScaled = 1.05;
 extern char **fileName;
 extern double YY;
-extern double XX;
 extern double carPhi;
 extern double deltaPhi;
 extern double deltay;

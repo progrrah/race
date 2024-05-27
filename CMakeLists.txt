@@ -18,7 +18,7 @@ IF(WIN32)
     target_link_libraries(race_lib PUBLIC OpenGL::GL GLUT::GLUT)
     target_link_libraries(interLib PUBLIC OpenGL::GL GLUT::GLUT)
     target_link_libraries(mainLib PUBLIC OpenGL::GL GLUT::GLUT)
-    target_link_libraries(race PUBLIC race_lib mainLib interLib OpenGL::GL GLUT::GLUT)
+    target_link_libraries(race PUBLIC mainLib race_lib interLib OpenGL::GL GLUT::GLUT)
 
 ELSE()
     find_package(OpenGL REQUIRED)

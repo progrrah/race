@@ -2,11 +2,12 @@
 дизайн всех объектов на треке
 1. бутылка bottle
 2. шипы spikes
-3. бонусы bonuses
+3. бонусы money
 4. разрыв дороги breakWay
 5. трамплин tramplin
 6. финиш finish
-7. деньги money
+7. шестерня gear
+8. сердце heart
 */
 #pragma once
 #include "library.hpp"
@@ -41,10 +42,11 @@ container_type<design*> bottleDesignElems{&bottleDesignEl1, &bottleDesignEl2};
 Design bottleDesign{bottleDesignElems};
 
 // описываем внешний вид шипов
-colorContainer_type spikesColorMain{{0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},};
+colorContainer_type spikesColorMain{
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+};
 // точки для большого прямоугольника
 Point spikesMainP1 = {-0.05, 0};
 Point spikesMainP2 = {-0.05, 0.05};
@@ -57,12 +59,11 @@ container_type<Point> spikesMainPoints{spikesMainP1, spikesMainP2, spikesMainP3,
 design spikesMain(spikesMainPoints, spikesColorMain, typeDrawing::QUADS);
 
 colorContainer_type spikesColor{
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-   {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
-    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
+    {0.5, 0.0, 0.5}, {0.5, 0.0, 0.5},
 };
 // точки для треугольников
 Point spikesTriangleP1 = {-0.05, 0};
@@ -123,22 +124,6 @@ Point heartMainP8 = {0.05, 0};
 container_type<Point> heartMainPoints{heartMainP1, heartMainP2, heartMainP4,
                                       heartMainP5, heartMainP6, heartMainP8};
 design heartMain(heartMainPoints, heartColorMain, typeDrawing::TRIANGLES);
-/* здесь большое сердце
- */
-// Point heartMainP1 = {-0.07, 0};
-// Point heartMainP2 = {-0.05, 0.05};
-// Point heartMainP3 = {-0.01, 0.05};
-// Point heartMainP4 = {-0.01, 0};
-// Point heartMainP5 = {0.01, 0};
-// Point heartMainP6 = {0.01, 0.05};
-// Point heartMainP7 = {0.05, 0.05};
-// Point heartMainP8 = {0.07, 0};
-
-// container_type<Point> heartMainPoints{heartMainP1, heartMainP2, heartMainP3,
-//                                       heartMainP4, heartMainP5, heartMainP6,
-//                                       heartMainP7, heartMainP8};
-// design heartMain(heartMainPoints, heartColorMain, typeDrawing::QUADS);
-
 container_type<design*> heartDesignElems{&heartTriangle, &heartMain};
 Design heartDesign{heartDesignElems};
 
@@ -246,7 +231,8 @@ colorContainer_type finishColor{
     {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
     {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0}, {1.0, 1.0, 1.0},
-    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},};
+    {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
+};
 // точки для сердца
 Point finishP1 = {-0.85, 0};
 Point finishP2 = {-0.85, 0.1};
@@ -322,9 +308,10 @@ Point tramplinP5 = {-0.05, 0.15};
 Point tramplinP6 = {-0.05, 0.2};
 Point tramplinP7 = {0.05, 0.2};
 Point tramplinP8 = {0.05, 0.15};
-container_type<Point> tramplinPoints{tramplinP1, tramplinP2,tramplinP3, tramplinP4,
-                                      tramplinP5, tramplinP6,tramplinP7, tramplinP8};
-                                      
+container_type<Point> tramplinPoints{tramplinP1, tramplinP2, tramplinP3,
+                                     tramplinP4, tramplinP5, tramplinP6,
+                                     tramplinP7, tramplinP8};
+
 design tramplinDs1(tramplinPoints, tramplinColor, typeDrawing::QUADS);
 container_type<design*> tramplinDesignElems{&tramplinDs1};
 Design tramplinDesign{tramplinDesignElems};

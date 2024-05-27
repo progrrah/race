@@ -315,3 +315,36 @@ container_type<Point> tramplinPoints{tramplinP1, tramplinP2, tramplinP3,
 design tramplinDs1(tramplinPoints, tramplinColor, typeDrawing::QUADS);
 container_type<design*> tramplinDesignElems{&tramplinDs1};
 Design tramplinDesign{tramplinDesignElems};
+
+colorContainer_type gearColor{
+    // желтые для + бонусов
+    {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},
+    {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},
+    {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},   {0.8, 0.9, 1},
+    {0.6, 0.8, 0.9}, {0.6, 0.8, 0.9}, {0.6, 0.8, 0.9}, {0.6, 0.8, 0.9}};
+// точки для сердца
+Point GearP1 = {-0.05, 0.025};
+Point GearP2 = {-0.05, -0.025};
+Point GearP3 = {0.05, -0.025};
+Point GearP4 = {0.05, 0.025};
+Point GearP5 = {-0.05, 0.025};
+Point GearP6 = {-0.025, 0.05};
+Point GearP7 = {0.025, 0.05};
+Point GearP8 = {0.05, 0.025};
+Point GearP9 = {-0.05, -0.025};
+Point GearP10 = {-0.025, -0.05};
+Point GearP11 = {0.025, -0.05};
+Point GearP12 = {0.05, -0.025};
+Point GearP13 = {-0.025, 0.025};
+Point GearP14 = {-0.025, -0.025};
+Point GearP15 = {0.025, -0.025};
+Point GearP16 = {0.025, 0.025};
+
+container_type<Point> gearPoints{
+    GearP1, GearP2,  GearP3,  GearP4,  GearP5,  GearP6,  GearP7,  GearP8,
+    GearP9, GearP10, GearP11, GearP12, GearP13, GearP14, GearP15, GearP16};
+// дизайн треугсердца
+design geardesigns(gearPoints, gearColor, typeDrawing::QUADS);
+
+container_type<design*> gearDesignElems{&geardesigns};
+Design gearDesign{gearDesignElems};

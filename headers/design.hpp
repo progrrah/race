@@ -86,6 +86,7 @@ spikes obj63(-0.1, 30, spikesDesign);
 spikes obj64(0.1, 36, spikesDesign);
 spikes obj65(0.0, 25, spikesDesign);
 spikes obj66(-0.1, 20, spikesDesign);
+gear obj67(0, 1, gearDesign);
 
 /* добавляем адреса всех объектов, которые будут находится на карте*/
 container_type<track_object *> mytrackObjects{
@@ -96,7 +97,7 @@ container_type<track_object *> mytrackObjects{
     &obj37, &obj38, &obj39, &obj40, &obj41,  &obj42, &obj43,  &obj44, &obj45,
     &obj46, &obj47, &obj48, &obj49, &obj50a, &obj50, &obj51a, &obj51, &obj52,
     &obj53, &obj54, &obj55, &obj56, &obj57,  &obj58, &obj59,  &obj60, &obj61,
-    &obj62, &obj63, &obj64, &obj65, &obj66};
+    &obj62, &obj63, &obj64, &obj65, &obj66,  &obj67};
 /*
 создаем трек, определяя его дизайн и те объекты которые будут на нем кроме
 машины

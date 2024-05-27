@@ -41,10 +41,10 @@ void Interaction::keyBoardGame(unsigned char key, int x, int y) {
       Interaction::changeXX(-deltax);
       break;
     case 'w':
-      if (YY + mycar.height / 2 <= 1) YY += deltay;
+      if (YY + mycar.height / 2 <= 1) YY += 4 * deltay;
       break;
     case 's':
-      if (YY - mycar.height / 2 >= -1) YY -= deltay;
+      if (YY - mycar.height / 2 >= -1) YY -= 4 * deltay;
       break;
     case 'q':
       exit(0);

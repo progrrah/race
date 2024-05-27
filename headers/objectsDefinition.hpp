@@ -175,16 +175,14 @@ struct bottle : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct gear : track_object {
-  int Phi;
   double Scaledx;
   double Scaledy;
   double SPEEDBOOSTED;
   void doing(car &mycar, track *mytrack = nullptr) override {}
-  gear(double exx, double exy, Design exDesign, double exSpeeding = 1.1,
-       bool key = false)
+  gear(double exx, double exy, Design exDesign, bool key = false,
+       double exSpeeding = 1.1)
       : track_object(exx, exy, exDesign, key) {
     SPEEDBOOSTED = exSpeeding;
-    Phi = 20;
   }
 };
 struct finish : track_object {

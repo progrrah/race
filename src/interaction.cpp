@@ -75,7 +75,7 @@ void Interaction::redisplayTimer(int value) {
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
 }
 void Interaction::moveСontinuously(int value) {
-  deltay += 0.01;
+  deltay += 0.012;
   glutTimerFunc(SHIFTING_TIME, redisplayTimer, 1);
 }
 void Interaction::changeXX(double deltax) {

@@ -204,8 +204,8 @@ colorContainer_type breakWayColor{
     {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}};
 // точки для большого прямоугольника
 Point breakWayP1 = {-0.85, 0};
-Point breakWayP2 = {-0.85, 0.1};
-Point breakWayP3 = {0.85, 0.1};
+Point breakWayP2 = {-0.85, 0.05};
+Point breakWayP3 = {0.85, 0.05};
 Point breakWayP4 = {0.85, 0};
 
 container_type<Point> breakWayPoints{breakWayP1, breakWayP2, breakWayP3,

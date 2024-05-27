@@ -170,10 +170,6 @@ struct spikes : track_object {
 struct bottle : track_object {
   void doing(car &mycar, track *mytrack = nullptr) override {
     deltax = -deltax;
-    scaleX *= deltaScaled;
-    scaleY *= deltaScaled;
-    mycar.width *= deltaScaled;
-    mycar.height *= deltaScaled;
   }
   bottle(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}

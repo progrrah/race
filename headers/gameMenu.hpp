@@ -5,6 +5,7 @@
 extern std::string BONUSES_IN_STRING;
 extern std::string LIFES_IN_STRING;
 extern std::string TIME_IN_STRING;
+extern Design trackDesign;
 using namespace Drawer;
 using namespace Objects;
 container_type<container_type<double>> menuMainColor{
@@ -29,7 +30,7 @@ Design gameMenuDesign{gameMenuMainDesigns};
 */
 
 money bottleinMenu(-0.80, 0.9, moneyDesign, 100, true);
-heart menuHeart(-0.6, 0.9, heartDesign, true);
+heart heartinMenu(-0.6, 0.9, heartDesign, true);
 
 std::string textString = "";
 text textTemplate(0., 0., textDesign, true, &textString);
@@ -40,6 +41,14 @@ text textLifes(-0.305, 0.4, textDesign, true, &LIFES_IN_STRING);
 block blockMenu(0.65, -0.8, blockDesign, true);
 
 container_type<track_object *> menuElems{
-    &textTemplate, &textBonus, &textTime, &textLifes,
-    &bottleinMenu, &menuHeart, &blockMenu};
-track menuGame{gameMenuDesign, menuElems};
+    &textTemplate, &textBonus,   &textTime, &textLifes,
+    &bottleinMenu, &heartinMenu, &blockMenu};
+track menuGame;
+track initmenuGame{gameMenuDesign, menuElems};
+
+std::string textEnd = {"YOU'RE WINNER"};
+text END_TEXT(-0.1, 0., textDesign, true, &textEnd);
+block END_BLOCK(0., 0., blockEndDesign, true);
+container_type<track_object *> endMenu{&END_TEXT, &END_BLOCK};
+
+track menuEnd{trackDesign, endMenu};

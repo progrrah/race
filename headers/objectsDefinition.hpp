@@ -20,7 +20,9 @@ extern double deltax;
 extern double deltaSpeed;
 extern double scaleX;
 extern double scaleY;
+// extern const int REDISPLAY_TIME;
 extern bool EXIT_KEY_IN_INTERACTION;
+extern bool EXIT_KEY_IS_FINISHED;
 namespace Objects {
 using namespace Drawer;
 struct track_object;
@@ -98,10 +100,7 @@ struct car {
     EXIT_KEY_IN_INTERACTION = true;
     for (int i{}; i < 10; i++) {
       animate();
-      // glutPostRedisplay();
     }
-    // TODO draw dead animation
-    // gameEndDisplay()
   }
   int getLifes() { return lifes; }
   car(){};
@@ -175,19 +174,16 @@ struct bottle : track_object {
       : track_object(exx, exy, exDesign, key) {}
 };
 struct gear : track_object {
-  double Scaledx;
-  double Scaledy;
-  double SPEEDBOOSTED;
-  void doing(car &mycar, track *mytrack = nullptr) override {}
-  gear(double exx, double exy, Design exDesign, bool key = false,
-       double exSpeeding = 1.1)
-      : track_object(exx, exy, exDesign, key) {
-    SPEEDBOOSTED = exSpeeding;
+  void doing(car &mycar, track *mytrack = nullptr) override {
+    deltay += 0.5 * deltay;
   }
+  gear(double exx, double exy, Design exDesign, bool key = false)
+      : track_object(exx, exy, exDesign, key) {}
 };
 struct finish : track_object {
   void doing(car &mycar, track *mytrack = nullptr) {
     EXIT_KEY_IN_INTERACTION = true;
+    EXIT_KEY_IS_FINISHED = true;
   }
   finish(double exx, double exy, Design exDesign, bool key = false)
       : track_object(exx, exy, exDesign, key) {}

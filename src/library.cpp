@@ -73,7 +73,6 @@ void Drawer::design::draw(typeDrawing type) {
     case typeDrawing::LINES:
       glLineWidth(WIDTH_LINES_OR_POINTS);
       glBegin(GL_LINE_STRIP);
-      // glBegin(GL_LINES);
       for (int i{}; i < numberPoints; i++) {
         double r, g, b;
         if (RANDOM_COLOR_OPTION) {

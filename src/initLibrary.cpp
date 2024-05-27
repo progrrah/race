@@ -25,8 +25,9 @@ char **fileName;
 extern car mycar;
 extern track mytrack;
 extern track initTrack;
+extern track initmenuGame;
 extern track menuGame;
-Game mygame(&initTrack, &initcar, 0);
+Game mygame(&initTrack, &initmenuGame, &initcar, 0);
 void displayGame() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   doTransformTrack();

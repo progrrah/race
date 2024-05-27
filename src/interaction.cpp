@@ -23,6 +23,7 @@ double deltaSpeed = 0.1;
 double scaleX = 0.7;
 double scaleY = 0.7;
 bool EXIT_KEY_IN_INTERACTION = false;
+bool EXIT_KEY_IS_FINISHED = false;
 int SELECT_KEY_DISPLAY = 1;
 int step_number = 1;
 std::string line_1 = "----------------------------------------";
@@ -76,9 +77,11 @@ void Interaction::redisplayTimer(int value) {
     interact(mytrack, mycar);
   else
     mycar.animate();
+  if (EXIT_KEY_IS_FINISHED) mygame.finishGame();
   glutTimerFunc(REDISPLAY_TIME, redisplayTimer, 1);
 }
 void Interaction::moveСontinuously(int value) {
+  deltay += 0.01;
   /*
   в течение времени SHIFTING_TIME за каждый REDISPLAY_TIME будет меняться
   */
@@ -142,13 +145,6 @@ void Interaction::interact(track &mytrack, car &mycar) {
     checkandDo();
   };
 }
-void Interaction::drawALL() {
-  for (auto &trackObj : mytrack.elems) {
-    canDraw(*trackObj, mycar);
-    trackObj->drawObject();
-  }
-}
-
 void Interaction::doTransformTrack() { glRotated(trackPhi, 0, 0, 1); }
 void Interaction::doTransformCar() {
   glRotated(carPhi, 1, 0, 0);

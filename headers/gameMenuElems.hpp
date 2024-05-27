@@ -25,3 +25,18 @@ design blockDs{blockPoints, blockColor, typeDrawing::LINES, 1};
 container_type<design*> blockdesigns{&blockDs};
 
 Design blockDesign{blockdesigns};
+
+Point blockEndPoint1 = {-0.4, -0.05};
+Point blockEndPoint2 = {-0.4, 0.05};
+Point blockEndPoint3 = {0.4, 0.05};
+Point blockEndPoint4 = {0.4, -0.05};
+Point blockEndPoint5 = {-0.4, -0.05};
+container_type<Point> blockEndPoints{blockEndPoint1, blockEndPoint2,
+                                     blockEndPoint3, blockEndPoint4,
+                                     blockEndPoint5};
+colorContainer_type blockEndColor{
+    {0, 0, 0}, {1, 1, 1}, {1, 1, 1}, {0, 0, 0}, {1, 1, 1}};
+design blockEndDs{blockEndPoints, blockEndColor, typeDrawing::LINES, 10};
+container_type<design*> blockEnddesigns{&blockEndDs};
+
+Design blockEndDesign{blockEnddesigns};

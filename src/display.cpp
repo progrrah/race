@@ -6,6 +6,10 @@ void Game::startGame() {
   mycar = *activeCar;
   TIME = time;
   YY = mycar.initY;
+  carPhi = 0;
+  scaleX = 1;
+  scaleY = 1;
+  EXIT_KEY_IN_INTERACTION = false;
 }
 void Game::restartGame() {}
 void Game::killGame() {}

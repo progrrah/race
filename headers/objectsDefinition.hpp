@@ -10,7 +10,7 @@ template <typename T>
 using container_type = std::vector<T>;
 using colorContainer_type = container_type<container_type<double>>;
 const float POINT_RADIUS = 6.0f;
-const double deltaScaled = 1.05;
+const double deltaScaled = 1.07;
 extern char **fileName;
 extern double YY;
 extern double carPhi;

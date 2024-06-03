@@ -74,3 +74,36 @@
 ## needed things
 1. draw line in interaction position (drotted lines baybe)
 2.  
+## beautiful color
+### here was a pink and maganty color
+```md
+container_type<double> bigQuadColor2{0.2, 0.2, 0.7};
+container_type<double> smallQuadColor2{0.2, 0.8, 0.1};
+design ds1(plist1, bigQuadColor2);
+design ds2(plist2, smallQuadColor2);
+        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glVertex2d(points.at(i).x, points.at(i).y);
+        glColor3d(r + 0.2, g + 0.3, b + 0.1);
+        glVertex2d(points.at(i + 1).x, points.at(i + 1).y);
+        glColor3d(r + 0.3, g + 0.3, b + 0.1);
+        glVertex2d(points.at(i + 2).x, points.at(i + 2).y);
+        glColor3d(r + 0.7, g + 0.3, b + 0.1);
+        glVertex2d(points.at(i + 3).x, points.at(i + 3).y);
+```
+
+## another beaufiful color
+```md
+container_type<double> bigQuadColor2{0.2, 0.2, 0.7};
+container_type<double> smallQuadColor2{0.2, 0.8, 0.1};
+design ds1(plist1, bigQuadColor2);
+design ds2(plist2, smallQuadColor2);
+        glColor3d(r + 0.1, g + 0.3, b + 0.1);
+        glVertex2d(points.at(i).x, points.at(i).y);
+        glColor3d(r + 0.2, g + 0.5, b + 0.1);
+        glVertex2d(points.at(i + 1).x, points.at(i + 1).y);
+        glColor3d(r + 0.3, g + 0.6, b + 0.1);
+        glVertex2d(points.at(i + 2).x, points.at(i + 2).y);
+        glColor3d(r + 0.7, g + 0.7, b + 0.1);
+        glVertex2d(points.at(i + 3).x, points.at(i + 3).y);
+```
+![alt text](image-1.png)
